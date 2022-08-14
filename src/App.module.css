@@ -1,0 +1,75 @@
+.app{
+    background: rgb(235, 228, 228);
+    height: 100vh;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.primary{
+    background: rgba(57, 57, 241, 0.87);
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center; 
+    color:white;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+
+}
+
+.primary:hover{
+    background: rgb(149, 149, 255);
+}
+.primary:disabled{
+    background: rgba(255, 255, 255, 0.568);
+    color:rgb(116, 116, 116);    
+    border: 1px solid rgba(255, 255, 255, 0.568);
+}
+.secondary{
+    background: rgb(235, 235, 236);
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center; 
+    color:rgb(65, 62, 62);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+
+}
+.secondary:hover{
+    background: rgb(189, 189, 189);
+    
+}
+.secondary:disabled{
+    background: rgba(255, 255, 255, 0.568);
+    color:rgb(116, 116, 116);    
+    border: 1px solid rgba(255, 255, 255, 0.568);
+}
+.error{
+    background: rgb(242, 242, 245);
+    border: 1px solid rgb(182, 182, 182);
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center; 
+    color:rgb(221, 28, 28);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+}
+.error:hover{
+    border: 2px solid rgb(182, 182, 182);
+    border-radius: 5px;
+}
+.error:disabled{
+    background: rgba(255, 255, 255, 0.568);
+    color:rgb(116, 116, 116);    
+    border: 1px solid rgba(255, 255, 255, 0.568);
+}
