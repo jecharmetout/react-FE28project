@@ -127,7 +127,7 @@ function App() {
       <div className={`${styles.wrapper} ${styles.wrapperTabs}`} >
         <Tabs/>
       </div>
-      <div className={`${styles.wrapper} ${styles.wrapperTabs}`}>
+      <div className={`${styles.wrapper}`}>
         <Title title={'Sign In'} className={styles.title}/>
       </div>
       
