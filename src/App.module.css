@@ -5,48 +5,6 @@
   flex-direction: column;
 }
 
-.tabsDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-ul.tabList {
-  list-style: none;
-  padding: 0;
-  border-bottom: 1px solid rgb(148, 142, 142);
-}
-ul.tabList li {
-  float: left;
-  margin-left: 18px;
-  /* border-bottom: 2px solid blue; */
-}
-ul.tabList li:first-child{
-  margin-left: 0;
-}
-ul.tabList button {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  padding: 10px 16px;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: 600;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-}
-ul.tabList button:hover {
-  color: rgba(60, 29, 235, 0.986);
-  border-bottom: 2px solid rgb(55, 27, 216);
-}
-ul.tabList button:disabled {
-  opacity: 0.7;
-  cursor: default;
-  color: rgb(116, 116, 116);
-  border: none;
-  cursor: default;
-}
-
-
 
 .wrapper {
   display: flex;
@@ -54,12 +12,8 @@ ul.tabList button:disabled {
   align-items: center;
   margin: 50px 0;
 }
-.wrapperTabs {
-  padding: 10px;
-  background-color: rgb(230, 219, 219);
-  display: flex;
-  flex-direction: column;
-}
+
+
 
 /* burger menu staff */
 nav {
