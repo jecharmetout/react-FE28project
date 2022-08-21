@@ -6,7 +6,6 @@
 }
 .wrapperTabs {
   padding: 10px;
-  background-color: rgb(230, 219, 219);
   display: flex;
   flex-direction: column;
 }
