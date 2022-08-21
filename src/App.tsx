@@ -6,42 +6,8 @@ import User from "./Components/User";
 import Title from "./Components/Title";
 import Tabs from "./Components/Tabs";
 import Input from "./Components/Input";
-const Navbar = () => {
-  return (
-    <nav className={styles.wrapperNavbar}>
-      <div className={styles.burgerBtn}>
-        <span />
-      </div>
-      <main>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis
-          consequatur facere aut ullam, deleniti eligendi, blanditiis, vitae
-          maxime est sit atque in porro. Soluta eligendi dignissimos, iure nulla
-          ullam aliquid.
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis
-          consequatur facere aut ullam, deleniti eligendi, blanditiis, vitae
-          maxime est sit atque in porro. Soluta eligendi dignissimos, iure nulla
-          ullam aliquid.
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis
-          consequatur facere aut ullam, deleniti eligendi, blanditiis, vitae
-          maxime est sit atque in porro. Soluta eligendi dignissimos, iure nulla
-          ullam aliquid.
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis
-          consequatur facere aut ullam, deleniti eligendi, blanditiis, vitae
-          maxime est sit atque in porro. Soluta eligendi dignissimos, iure nulla
-          ullam aliquid.
-        </p>
-      </main>
-      {/* <Menu/> */}
-    </nav>
-  );
-};
+import Navbar from './Components/Navbar'
+
 
 
 
@@ -54,6 +20,7 @@ function App() {
  
   return (
     <div className={styles.app}>
+      <Navbar/>
       <Input
         placeholder={"Placeholder"}
         onChange={onChange}
