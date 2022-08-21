@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 // @ts-ignore
 import styles from "./App.module.css";
 import Button, {ButtonType} from './Components/Button'
+import User from './Components/User'
 // import Menu from './components/navbar';
 // import Input from './components/Input';
 const Navbar = () => {
@@ -42,13 +43,6 @@ const Navbar = () => {
 };
 
 
-const User = ({ userName }: any) => {
-  return (
-    <div className={styles.user}>
-      <p>{userName}</p>
-    </div>
-  );
-};
 const Title = ({ title, className }: any) => {
   return (
     <div className={styles.wrapperTitle}>
