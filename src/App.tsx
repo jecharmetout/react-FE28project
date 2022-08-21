@@ -4,6 +4,7 @@ import styles from "./App.module.css";
 import Button, {ButtonType} from './Components/Button'
 import User from './Components/User'
 import Title from './Components/Title'
+import Tabs from './Components/Tabs'
 // import Menu from './components/navbar';
 // import Input from './components/Input';
 const Navbar = () => {
@@ -45,78 +46,7 @@ const Navbar = () => {
 
 
 
-const Tabs = () => {
-  const tabItems = {
-    all: "All",
-    myfav: "My favorites",
-    popular: "Popular"
-  };
-  const [value, setValue] = React.useState(0);
-  const actArray = [];
-  for (let i = 0; i < 4; i++) {
-    if (i === value) {
-      actArray.push("btn active");
-    } else {
-      actArray.push("btn");
-    }
-  }
-  return (
-    <>
-      <ul className={styles.tabList}>
-        <li>
-          <button
-            type="button"
-            className={actArray[0]}
-            onClick={() => {
-              setValue(0);
-            }}
-          >
-            All
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            className={actArray[1]}
-            onClick={() => {
-              setValue(1);
-            }}
-          >
-            My favorites
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            className={actArray[2]}
-            disabled
-            onClick={() => {
-              setValue(2);
-            }}
-          >
-            Disabled
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            className={actArray[3]}
-            onClick={() => {
-              setValue(3);
-            }}
-          >
-            Popular
-          </button>
-        </li>
-      </ul>
-      <br />
-      <br />
-      <div>
-        <h2>TAB NO: {value + 1}</h2>
-      </div>
-    </>
-  );
-};
+
 function App() {
   // const [value, setValue] = useState<string>('');
 
@@ -188,9 +118,9 @@ function App() {
       <div className={styles.wrapper}>
         <User userName={"Artem Malkin"} />
       </div>
-      <div className={`${styles.wrapper} ${styles.wrapperTabs}`}>
-        <Tabs />
-      </div>
+      
+      <Tabs />
+
       <div className={`${styles.wrapper}`}>
         <Title title={"Sign In"} />
       </div>
