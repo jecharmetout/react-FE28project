@@ -3,6 +3,7 @@ import React, { FC, useState } from "react";
 import styles from "./App.module.css";
 import Button, {ButtonType} from './Components/Button'
 import User from './Components/User'
+import Title from './Components/Title'
 // import Menu from './components/navbar';
 // import Input from './components/Input';
 const Navbar = () => {
@@ -43,13 +44,7 @@ const Navbar = () => {
 };
 
 
-const Title = ({ title, className }: any) => {
-  return (
-    <div className={styles.wrapperTitle}>
-      <h2 className={className}>{title}</h2>
-    </div>
-  );
-};
+
 const Tabs = () => {
   const tabItems = {
     all: "All",
@@ -197,7 +192,7 @@ function App() {
         <Tabs />
       </div>
       <div className={`${styles.wrapper}`}>
-        <Title title={"Sign In"} className={styles.title} />
+        <Title title={"Sign In"} />
       </div>
     </div>
   );
