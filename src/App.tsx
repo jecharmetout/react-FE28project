@@ -43,13 +43,15 @@ const Navbar = () => {
   );
 };
 
+
+
 function App() {
   const [value, setValue] = useState<string>("");
 
   const onChange = (inputValue: string) => {
     setValue(inputValue);
   };
-
+ 
   return (
     <div className={styles.app}>
       <Input
@@ -59,6 +61,7 @@ function App() {
         // disabled={true}
         // error={true}
       />
+
       {/* <Navbar /> */}
       <div className={styles.wrapper}>
         <Button
@@ -121,7 +124,7 @@ function App() {
         <User userName={"Artem Malkin"} />
       </div>
 
-      <Tabs />
+      <Tabs/>
 
       <div className={`${styles.wrapper}`}>
         <Title title={"Sign In"} />
