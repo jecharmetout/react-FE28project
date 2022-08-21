@@ -1,12 +1,11 @@
 import React, { FC, useState } from "react";
 // @ts-ignore
 import styles from "./App.module.css";
-import Button, {ButtonType} from './Components/Button'
-import User from './Components/User'
-import Title from './Components/Title'
-import Tabs from './Components/Tabs'
-// import Menu from './components/navbar';
-// import Input from './components/Input';
+import Button, { ButtonType } from "./Components/Button";
+import User from "./Components/User";
+import Title from "./Components/Title";
+import Tabs from "./Components/Tabs";
+import Input from "./Components/Input";
 const Navbar = () => {
   return (
     <nav className={styles.wrapperNavbar}>
@@ -44,19 +43,22 @@ const Navbar = () => {
   );
 };
 
-
-
-
 function App() {
-  // const [value, setValue] = useState<string>('');
+  const [value, setValue] = useState<string>("");
 
-  // const onChange = (inputValue:string)=>{
-  //   setValue(inputValue)
-  // }
+  const onChange = (inputValue: string) => {
+    setValue(inputValue);
+  };
 
   return (
     <div className={styles.app}>
-      {/* <Input placeholder={'Placeholder'} onChange={onChange} value={value} disabled={true}/> */}
+      <Input
+        placeholder={"Placeholder"}
+        onChange={onChange}
+        value={value}
+        // disabled={true}
+        // error={true}
+      />
       {/* <Navbar /> */}
       <div className={styles.wrapper}>
         <Button
@@ -118,7 +120,7 @@ function App() {
       <div className={styles.wrapper}>
         <User userName={"Artem Malkin"} />
       </div>
-      
+
       <Tabs />
 
       <div className={`${styles.wrapper}`}>
