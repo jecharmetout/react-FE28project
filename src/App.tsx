@@ -6,10 +6,8 @@ import User from "./Components/User";
 import Title from "./Components/Title";
 import Tabs from "./Components/Tabs";
 import Input from "./Components/Input";
-import Navbar from './Components/Navbar'
-
-
-
+import Navbar from "./Components/Navbar";
+import Menu from "./Components/Navbar/Menu"
 
 function App() {
   const [value, setValue] = useState<string>("");
@@ -17,10 +15,24 @@ function App() {
   const onChange = (inputValue: string) => {
     setValue(inputValue);
   };
- 
+  const [isOpened, setOpened] = useState(false);
+
   return (
     <div className={styles.app}>
-      <Navbar/>
+      <Navbar
+        onClick={() => setOpened(!isOpened)}
+        title={isOpened ? "x" : "="}
+        input={
+          isOpened ? null : (
+            <Input
+              placeholder={"Placeholder"}
+              onChange={onChange}
+              value={value}
+            />
+          )
+        }
+      />
+      {isOpened && <Menu/>}
       <Input
         placeholder={"Placeholder"}
         onChange={onChange}
@@ -29,7 +41,6 @@ function App() {
         // error={true}
       />
 
-      {/* <Navbar /> */}
       <div className={styles.wrapper}>
         <Button
           type={ButtonType.Primary}
@@ -91,7 +102,7 @@ function App() {
         <User userName={"Artem Malkin"} />
       </div>
 
-      <Tabs/>
+      <Tabs />
 
       <div className={`${styles.wrapper}`}>
         <Title title={"Sign In"} />
