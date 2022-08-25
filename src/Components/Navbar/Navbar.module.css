@@ -1,0 +1,91 @@
+nav {
+  width: 100%;
+  background-color: rgb(34, 49, 170);
+  position: relative;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-bottom: 30px; */
+
+}
+.userSearchWrapper {
+    display: flex;
+
+}
+.inputNavbar{
+    background: rgb(83, 96, 205);
+    color: #ffffff;
+}
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border-right: 1px solid rgb(83, 96, 205);
+    border-left: 1px solid rgb(83, 96, 205);
+    cursor: pointer;
+
+}
+.burgerButton {
+    padding: 0px 30px;
+    border-right: 1px solid rgb(83, 96, 205);
+    cursor: pointer;
+    /* font-size: 25px;
+    font-weight: 600;
+    color: #ffffff; */
+
+
+}
+
+.burgerButton p{
+  width: 25px;
+  height: 25px;
+  font-size: 25px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+
+
+}
+main {
+  padding: 50px;
+}
+main p {
+  margin: 20px 0;
+}
+.burgerBtn {
+  width: 20px;
+  height: 30px;
+  margin-left: 20px;
+  position: relative;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.burgerBtn:before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  width: 25px;
+  background: white;
+  height: 3px;
+}
+
+.burgerBtn span {
+  position: absolute;
+  top: 15px;
+  width: 25px;
+  background: white;
+  height: 3px;
+}
+.burgerBtn:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 25px;
+  background: white;
+  height: 3px;
+}

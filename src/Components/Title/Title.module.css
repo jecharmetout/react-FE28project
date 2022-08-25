@@ -1,0 +1,11 @@
+.title {
+  font-size: 50px;
+  font-weight: bold;
+}
+.wrapperTitle {
+  background: rgb(212, 207, 207);
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

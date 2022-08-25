@@ -1,24 +1,112 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useState } from "react";
+// @ts-ignore
+import styles from "./App.module.css";
+import Button, { ButtonType } from "./Components/Button";
+import User from "./Components/User";
+import Title from "./Components/Title";
+import Tabs from "./Components/Tabs";
+import Input from "./Components/Input";
+import Navbar from "./Components/Navbar";
+import Menu from "./Components/Navbar/Menu"
 
 function App() {
+  const [value, setValue] = useState<string>("");
+
+  const onChange = (inputValue: string) => {
+    setValue(inputValue);
+  };
+  const [isOpened, setOpened] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app}>
+      <Navbar
+        onClick={() => setOpened(!isOpened)}
+        title={isOpened ? "x" : "="}
+        input={
+          isOpened ? null : (
+            <Input
+              placeholder={"Placeholder"}
+              onChange={onChange}
+              value={value}
+            />
+          )
+        }
+      />
+      {isOpened && <Menu/>}
+      <Input
+        placeholder={"Placeholder"}
+        onChange={onChange}
+        value={value}
+        // disabled={true}
+        // error={true}
+      />
+
+      <div className={styles.wrapper}>
+        <Button
+          type={ButtonType.Primary}
+          title={"Primary"}
+          onClick={() => {
+            console.log("primary");
+          }}
+          className={styles.primary}
+          disabled={false}
+        />
+        <Button
+          type={ButtonType.Primary}
+          title={"Primary"}
+          onClick={() => {
+            console.log("primary");
+          }}
+          className={styles.primary}
+          disabled={true}
+        />
+        <Button
+          type={ButtonType.Secondary}
+          title={"Secondary"}
+          onClick={() => {
+            console.log("secondary");
+          }}
+          className={styles.secondary}
+          disabled={false}
+        />
+        <Button
+          type={ButtonType.Secondary}
+          title={"Secondary"}
+          onClick={() => {
+            console.log("secondary");
+          }}
+          className={styles.secondary}
+          disabled={true}
+        />
+        <Button
+          type={ButtonType.Error}
+          title={"Error"}
+          onClick={() => {
+            console.log("error");
+          }}
+          className={styles.error}
+          disabled={false}
+        />
+        <Button
+          type={ButtonType.Error}
+          title={"Error"}
+          onClick={() => {
+            console.log("error");
+          }}
+          className={styles.error}
+          disabled={true}
+        />
+      </div>
+
+      <div className={styles.wrapper}>
+        <User userName={"Artem Malkin"} />
+      </div>
+
+      <Tabs />
+
+      <div className={`${styles.wrapper}`}>
+        <Title title={"Sign In"} />
+      </div>
     </div>
   );
 }
