@@ -20,7 +20,7 @@ const Navbar = ({onClick, title, input}:any) => {
       </div>
       {input}
       <div className={styles.userSearchWrapper}>
-        <div className={styles.search}>
+        <div className={styles.searchIcon} onClick={ ()=>{alert('Searh')}}>
           <SearchIcon/>
         </div>
         <User userName={"Artem Malkin"} />
