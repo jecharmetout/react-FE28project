@@ -7,7 +7,11 @@ import Title from "./Components/Title";
 import Tabs from "./Components/Tabs";
 import Input from "./Components/Input";
 import Navbar from "./Components/Navbar";
-import Menu from "./Components/Navbar/Menu"
+import Menu from "./Components/Navbar/Menu";
+import Card from "./Components/Card";
+import {MenuIcon} from './Assets/Icons/MenuIcon'
+import {CancelIcon} from './Assets/Icons'
+
 
 function App() {
   const [value, setValue] = useState<string>("");
@@ -21,7 +25,7 @@ function App() {
     <div className={styles.app}>
       <Navbar
         onClick={() => setOpened(!isOpened)}
-        title={isOpened ? "x" : "="}
+        title={isOpened ? <CancelIcon/> : <MenuIcon/>}
         input={
           isOpened ? null : (
             <Input
@@ -40,7 +44,10 @@ function App() {
         // disabled={true}
         // error={true}
       />
-
+      <div className={styles.wrapper}>
+      <Card/>
+      </div>
+      
       <div className={styles.wrapper}>
         <Button
           type={ButtonType.Primary}
