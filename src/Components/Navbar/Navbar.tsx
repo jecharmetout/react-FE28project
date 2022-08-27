@@ -3,7 +3,7 @@ import React, { FC,useState } from "react";
 //@ts-ignore
 import styles from "./Navbar.module.css";
 import User from "../User/User";
-
+import {SearchIcon} from '../../Assets/Icons/index'
 
 
 
@@ -15,13 +15,13 @@ const Navbar = ({onClick, title, input}:any) => {
         className={styles.burgerButton}
         onClick={onClick}
       >
-        <p>{title}</p>
+        {title}
 
       </div>
       {input}
       <div className={styles.userSearchWrapper}>
         <div className={styles.search}>
-          <img src={"../img/search.png"} alt="" />
+          <SearchIcon/>
         </div>
         <User userName={"Artem Malkin"} />
       </div>
