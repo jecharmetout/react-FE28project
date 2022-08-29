@@ -8,7 +8,7 @@ import Tabs from "./Components/Tabs";
 import Input from "./Components/Input";
 import Navbar from "./Components/Navbar";
 import Menu from "./Components/Navbar/Menu";
-import Card from "./Components/Card";
+import CardList from "./Components/CardList";
 import {MenuIcon} from './Assets/Icons/MenuIcon'
 import {CancelIcon} from './Assets/Icons'
 
@@ -45,7 +45,7 @@ function App() {
         // error={true}
       />
       <div className={styles.wrapper}>
-      <Card/>
+      <CardList/>
       </div>
       
       <div className={styles.wrapper}>
