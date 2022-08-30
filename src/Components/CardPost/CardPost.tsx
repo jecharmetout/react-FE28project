@@ -7,11 +7,11 @@ import { ThumbDownIcon } from "../../Assets/Icons/ThumbDownIcon";
 import { ThumbUpIcon } from "../../Assets/Icons/ThumbUpIcon";
 import { Ellipsis } from "../../Assets/Icons/EllipsisIcon";
 import { BookMarksIcon } from "../../Assets/Icons/BookMarksIcon";
+import {CardPostProps} from './types'
 
 
-
-const CardPost = ({ post, size }: any) => {
-  const { id, image, text, date, title } = post;
+const CardPost:FC<CardPostProps> = ({ post, size }) => {
+  const { image, text, date, title} = post;
   return (
     <>
       <div
