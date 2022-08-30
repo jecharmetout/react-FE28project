@@ -30,7 +30,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: start;
-  margin-bottom: 25.5px;
+  margin-bottom: 25px;
 }
 .mediumPost {
   width: 352px;
@@ -39,13 +39,13 @@
   /* background-color: bisque; */
   flex-direction: column;
   flex-wrap: wrap;
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid rgba(218, 218, 218, 1);
   margin-bottom: 40px;
 }
 .mediumPost:nth-last-child(1),
 .mediumPost:nth-last-child(2) {
   margin-bottom: 0px;
-  border-bottom: none;
+
 }
 
 .smallPost {
