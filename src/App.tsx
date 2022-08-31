@@ -9,9 +9,9 @@ import Input from "./Components/Input";
 import Navbar from "./Components/Navbar";
 import Menu from "./Components/Navbar/Menu";
 import CardList from "./Components/CardList";
-import {MenuIcon} from './Assets/Icons/MenuIcon'
-import {CancelIcon} from './Assets/Icons'
-
+import Footer from "./Components/Footer";
+import SignUp from "./Pages/SignUp";
+import SignIn from './Pages/SignIn';
 
 function App() {
   const [value, setValue] = useState<string>("");
@@ -22,12 +22,108 @@ function App() {
   const [isOpened, setOpened] = useState(false);
 
   return (
+    // <div className={styles.app}>
+    //   <Navbar
+    //     onClick={() => setOpened(!isOpened)}
+    //     title={isOpened ? <CancelIcon/> : <MenuIcon/>}
+    //     input={
+    //       isOpened ? null : (
+    //         <Input
+    //           placeholder={"Placeholder"}
+    //           onChange={onChange}
+    //           value={value}
+    //         />
+    //       )
+    //     }
+    //   />
+    //   {isOpened && <Menu/>}
+    //   <Input
+    //     placeholder={"Placeholder"}
+    //     onChange={onChange}
+    //     value={value}
+    //     // disabled={true}
+    //     // error={true}
+    //   />
+    //   <div className={styles.wrapper}>
+    //   <CardList/>
+    //   </div>
+
+    //   <div className={styles.wrapper}>
+    //     <Button
+    //       type={ButtonType.Primary}
+    //       title={"Primary"}
+    //       onClick={() => {
+    //         console.log("primary");
+    //       }}
+    //       className={styles.primary}
+    //       disabled={false}
+    //     />
+    //     <Button
+    //       type={ButtonType.Primary}
+    //       title={"Primary"}
+    //       onClick={() => {
+    //         console.log("primary");
+    //       }}
+    //       className={styles.primary}
+    //       disabled={true}
+    //     />
+    //     <Button
+    //       type={ButtonType.Secondary}
+    //       title={"Secondary"}
+    //       onClick={() => {
+    //         console.log("secondary");
+    //       }}
+    //       className={styles.secondary}
+    //       disabled={false}
+    //     />
+    //     <Button
+    //       type={ButtonType.Secondary}
+    //       title={"Secondary"}
+    //       onClick={() => {
+    //         console.log("secondary");
+    //       }}
+    //       className={styles.secondary}
+    //       disabled={true}
+    //     />
+    //     <Button
+    //       type={ButtonType.Error}
+    //       title={"Error"}
+    //       onClick={() => {
+    //         console.log("error");
+    //       }}
+    //       className={styles.error}
+    //       disabled={false}
+    //     />
+    //     <Button
+    //       type={ButtonType.Error}
+    //       title={"Error"}
+    //       onClick={() => {
+    //         console.log("error");
+    //       }}
+    //       className={styles.error}
+    //       disabled={true}
+    //     />
+    //   </div>
+
+    //   <div className={styles.wrapper}>
+    //     <User userName={"Artem Malkin"} />
+    //   </div>
+
+    //   <Tabs />
+
+    //   <div className={`${styles.wrapper}`}>
+    //     <Title title={"Sign In"} />
+    //   </div>
+    //   <Footer/>
+    // </div>
     <div className={styles.app}>
+      <div className={styles.navbarMenu}>
       <Navbar
         onClick={() => setOpened(!isOpened)}
-        title={isOpened ? <CancelIcon/> : <MenuIcon/>}
+        isOpened={isOpened}
+  
         input={
-          isOpened ? null : (
+          isOpened && (
             <Input
               placeholder={"Placeholder"}
               onChange={onChange}
@@ -36,84 +132,13 @@ function App() {
           )
         }
       />
-      {isOpened && <Menu/>}
-      <Input
-        placeholder={"Placeholder"}
-        onChange={onChange}
-        value={value}
-        // disabled={true}
-        // error={true}
-      />
-      <div className={styles.wrapper}>
+      {isOpened && <Menu />}
+      </div>
+
+      <SignUp />
+      <SignIn />
       <CardList/>
-      </div>
-      
-      <div className={styles.wrapper}>
-        <Button
-          type={ButtonType.Primary}
-          title={"Primary"}
-          onClick={() => {
-            console.log("primary");
-          }}
-          className={styles.primary}
-          disabled={false}
-        />
-        <Button
-          type={ButtonType.Primary}
-          title={"Primary"}
-          onClick={() => {
-            console.log("primary");
-          }}
-          className={styles.primary}
-          disabled={true}
-        />
-        <Button
-          type={ButtonType.Secondary}
-          title={"Secondary"}
-          onClick={() => {
-            console.log("secondary");
-          }}
-          className={styles.secondary}
-          disabled={false}
-        />
-        <Button
-          type={ButtonType.Secondary}
-          title={"Secondary"}
-          onClick={() => {
-            console.log("secondary");
-          }}
-          className={styles.secondary}
-          disabled={true}
-        />
-        <Button
-          type={ButtonType.Error}
-          title={"Error"}
-          onClick={() => {
-            console.log("error");
-          }}
-          className={styles.error}
-          disabled={false}
-        />
-        <Button
-          type={ButtonType.Error}
-          title={"Error"}
-          onClick={() => {
-            console.log("error");
-          }}
-          className={styles.error}
-          disabled={true}
-        />
-      </div>
-
-      <div className={styles.wrapper}>
-        <User userName={"Artem Malkin"} />
-      </div>
-
-      <Tabs />
-
-      <div className={`${styles.wrapper}`}>
-        <Title title={"Sign In"} />
-      </div>
+      <Footer/>
     </div>
   );
 }
