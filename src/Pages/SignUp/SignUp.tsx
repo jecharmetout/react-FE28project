@@ -46,12 +46,12 @@ const SignUp = () => {
   }, [passwordTouched, password]);
 
   useEffect(() => {
-    if (confirmPasswordTouched && confirmPassword.length < 8 && password === confirmPassword) {
+    if (confirmPasswordTouched && confirmPassword.length < 8 && confirmPassword != password) {
       setConfirmPasswordError("Confirm validation failed. Password does not match");
     } else {
       setConfirmPasswordError("");
     }
-  }, [confirmPasswordTouched, confirmPassword]);
+  }, [confirmPasswordTouched, confirmPassword, password]);
 
 
 
