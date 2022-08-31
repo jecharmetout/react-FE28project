@@ -4,10 +4,12 @@ import React, { FC,useState } from "react";
 import styles from "./Navbar.module.css";
 import User from "../User/User";
 import {SearchIcon} from '../../Assets/Icons/index'
+import { MenuIcon } from "../../Assets/Icons";
+import { CancelIcon } from "../../Assets/Icons";
 
 
 
-const Navbar = ({onClick, title, input}:any) => {
+const Navbar = ({onClick,  input, isOpened}:any) => {
 
   return (
     <nav className={styles.nav}>
@@ -15,7 +17,7 @@ const Navbar = ({onClick, title, input}:any) => {
         className={styles.burgerButton}
         onClick={onClick}
       >
-        {title}
+          {isOpened ? <CancelIcon /> : <MenuIcon />}
 
       </div>
       {input}
