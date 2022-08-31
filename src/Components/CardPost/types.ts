@@ -1,4 +1,4 @@
-export type CardPostType = {
+export type  CardPostType = {
   id: number;
   image: string;
   text: string;
