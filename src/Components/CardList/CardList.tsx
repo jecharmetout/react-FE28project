@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 //@ts-ignore
 import styles from "./CardList.module.css";
 import CardPost from "../CardPost";
+
 
 
 export enum CardSize {
@@ -10,7 +11,20 @@ export enum CardSize {
   Small = "small"
 }
 
+type Card = {
+  id: number;
+  image: string;
+  text: string;
+  date: string;
+  lesson_num: number;
+  title: string;
+  author: number;
+}
+// type CardList = Card[]
+type CardList = Array<Card>
+
 const CardList = () => {
+
   const POST_MOCK = [
     {
       id: 1,
@@ -135,16 +149,23 @@ const CardList = () => {
     },
    
   ];
-
-  return (
+  
+  const [cardList, setCardList] = useState<CardList | null>([])
+  
+  useEffect(()=>{
+    setCardList(POST_MOCK)
+  }, [])
+  
+  
+  return cardList && cardList.length > 0 ? (
     <div className={styles.listWrapper}>
       <div className={styles.leftSideList}>
         <div className={styles.largeCardListWrapper}>
-          <CardPost post={POST_MOCK[0]} size={CardSize.Large} />
+          <CardPost post={cardList[0]} size={CardSize.Large} />
         </div>
 
         <div className={styles.mediumCardListWrapper}>
-          {POST_MOCK.map((post, id) => {
+          {cardList.map((post, id) => {
             if (id >= 1 && id <= 4) {
               return (
                 <CardPost post={post} key={post.id} size={CardSize.Medium} />
@@ -154,7 +175,7 @@ const CardList = () => {
         </div>
       </div>
       <div className={styles.rightSideList}>
-        {POST_MOCK.map((post, id) => {
+        {cardList.map((post, id) => {
           if (id >= 5) {
             return <CardPost post={post} key={post.id} size={CardSize.Small} />;
           }
@@ -162,8 +183,8 @@ const CardList = () => {
       </div>
     </div>
 
-    // null
-  );
+
+  ) : null;
 };
 
 export default CardList;
