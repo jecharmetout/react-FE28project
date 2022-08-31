@@ -1,11 +1,12 @@
 .title {
-  font-size: 50px;
-  font-weight: bold;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 80px;
 }
 .wrapperTitle {
-  background: rgb(212, 207, 207);
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: rgba(243, 243, 243, 1);
+  width: 212px;
+  text-align: start;
 }
