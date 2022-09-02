@@ -2,6 +2,7 @@ import React, {useState,useEffect} from "react";
 //@ts-ignore
 import styles from "./CardList.module.css";
 import CardPost from "../CardPost";
+import {CardPostType} from '../CardPost/types'
 
 
 
@@ -11,17 +12,8 @@ export enum CardSize {
   Small = "small"
 }
 
-type Card = {
-  id: number;
-  image: string;
-  text: string;
-  date: string;
-  lesson_num: number;
-  title: string;
-  author: number;
-}
 // type CardList = Card[]
-type CardList = Array<Card>
+type CardList = Array<CardPostType>
 
 const CardList = () => {
 
