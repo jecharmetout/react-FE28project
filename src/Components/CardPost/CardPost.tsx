@@ -3,10 +3,12 @@ import React, { FC } from "react";
 import styles from "./CardPost.module.css";
 import { CardSize } from "../CardList";
 import classNames from "classnames";
-import { ThumbDownIcon } from "../../Assets/Icons/ThumbDownIcon";
-import { ThumbUpIcon } from "../../Assets/Icons/ThumbUpIcon";
-import { Ellipsis } from "../../Assets/Icons/EllipsisIcon";
-import { BookMarksIcon } from "../../Assets/Icons/BookMarksIcon";
+import {
+  ThumbDownIcon,
+  ThumbUpIcon,
+  Ellipsis,
+  BookMarksIcon
+} from "../../Assets/Icons";
 import { CardPostProps } from "./types";
 
 const CardPost: FC<CardPostProps> = ({ post, size }) => {
