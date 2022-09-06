@@ -1,6 +1,8 @@
 .listWrapper {
   display: flex;
   flex-direction: row;
+  margin-bottom: 100px;
+  
 }
 .leftSideList {
   display: flex;
