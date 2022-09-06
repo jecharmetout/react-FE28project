@@ -19,6 +19,9 @@
   width: 100%;
   margin-bottom: 72px;
 }
+.contentWrapper{
+  padding: 0 200px;
+}
 
 .wrapper {
   display: flex;

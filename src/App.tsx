@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 // @ts-ignore
 import styles from "./App.module.css";
+import classNames from "classnames";
 import Button, { ButtonType } from "./Components/Button";
 import User from "./Components/User";
 import Title from "./Components/Title";
@@ -11,7 +12,9 @@ import Menu from "./Components/Navbar/Menu";
 import CardList from "./Components/CardList";
 import Footer from "./Components/Footer";
 import SignUp from "./Pages/SignUp";
-import SignIn from './Pages/SignIn';
+import SignIn from "./Pages/SignIn";
+import Search from "./Pages/Search";
+import ThemeProvider from './Context/ThemeContext/Provider'
 
 function App() {
   const [value, setValue] = useState<string>("");
@@ -20,6 +23,7 @@ function App() {
     setValue(inputValue);
   };
   const [isOpened, setOpened] = useState(false);
+  const [isDark, setDark] = useState(false);
 
   return (
     // <div className={styles.app}>
@@ -118,27 +122,29 @@ function App() {
     // </div>
     <div className={styles.app}>
       <div className={styles.navbarMenu}>
-      <Navbar
-        onClick={() => setOpened(!isOpened)}
-        isOpened={isOpened}
-  
-        input={
-          isOpened && (
-            <Input
-              placeholder={"Placeholder"}
-              onChange={onChange}
-              value={value}
-            />
-          )
-        }
-      />
-      {isOpened && <Menu />}
+        <Navbar
+          onClick={() => setOpened(!isOpened)}
+          isOpened={isOpened}
+          input={
+            isOpened && (
+              <Input
+                placeholder={"Placeholder"}
+                onChange={onChange}
+                value={value}
+              />
+            )
+          }
+          changeThemeOnClick={() => setDark(!isDark)}
+          isDark={isDark}
+        />
+        {isOpened && <Menu />}
       </div>
-
-      <SignUp />
+      <div className={classNames(styles.contentWrapper)}></div>
+      <Search />
+      {/* <SignUp />
       <SignIn />
-      <CardList/>
-      <Footer/>
+      <CardList/> */}
+      <Footer />
     </div>
   );
 }
