@@ -1,8 +1,12 @@
 import React, {useState,useEffect} from "react";
 //@ts-ignore
 import styles from "./CardList.module.css";
+import classNames from "classnames";
+
 import CardPost from "../CardPost";
 import {CardPostType} from '../CardPost/types'
+
+import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
 
 
 
@@ -16,6 +20,9 @@ export enum CardSize {
 type CardList = Array<CardPostType>
 
 const CardList = () => {
+
+  const { theme } = useThemeContext();
+
 
   const POST_MOCK = [
     {
@@ -150,7 +157,9 @@ const CardList = () => {
   
   
   return cardList && cardList.length > 0 ? (
-    <div className={styles.listWrapper}>
+    <div className={classNames(styles.listWrapper, {
+      [styles.darkContainer]: theme === Theme.Dark
+    })}>
       <div className={styles.leftSideList}>
         <div className={styles.largeCardListWrapper}>
           <CardPost post={cardList[0]} size={CardSize.Large} />

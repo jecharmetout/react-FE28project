@@ -1,11 +1,10 @@
 .wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin: 50px 0;
 }
 .wrapperTabs {
-  padding: 10px;
+
   display: flex;
   flex-direction: column;
 }
@@ -13,16 +12,16 @@
 .tabsDiv {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 ul.tabList {
   list-style: none;
   padding: 0;
-  border-bottom: 1px solid rgb(148, 142, 142);
+  border-bottom: 1px solid rgba(218, 218, 218, 1);
 }
 ul.tabList li {
   float: left;
   margin-left: 18px;
+
   /* border-bottom: 2px solid blue; */
 }
 ul.tabList li:first-child {
@@ -32,16 +31,23 @@ ul.tabList button {
   border: none;
   outline: none;
   background-color: transparent;
-  padding: 10px 16px;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: 600;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
+
+
 }
-ul.tabList button:hover {
-  color: rgba(60, 29, 235, 0.986);
-  border-bottom: 2px solid rgb(55, 27, 216);
+ul.tabList li {
+
+  padding-bottom: 25px ;
+  text-align:  center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  border-bottom: 2px solid transparent;
+  color:#313037;
+
+}
+ul.tabList li:hover {
+  border-bottom: 2px solid #313037;
 }
 ul.tabList button:disabled {
   opacity: 0.7;
@@ -49,4 +55,25 @@ ul.tabList button:disabled {
   color: rgb(116, 116, 116);
   border: none;
   cursor: default;
+}
+
+/* DarkTheme */
+
+.darkContainer ul.tabList button {
+  color: #ffffff;
+}
+.darkContainer ul.tabList li:hover {
+  color:#ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+.darkContainer ul.tabList li:disabled{
+  opacity: 0.7;
+  cursor: default;
+  color: rgb(116, 116, 116);
+  border: none;
+  cursor: default;
+}
+.darkContainer ul.tabList{
+  border-bottom: 1px solid #8D8E97;
+
 }

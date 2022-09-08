@@ -5,38 +5,50 @@
   justify-content: space-around;
   align-items: center;
   height: 100;
-
 }
-.headForm{
-    margin-bottom: 72px;
-    align-self: flex-start;
+.headForm {
+  margin-bottom: 72px;
+  align-self: flex-start;
 }
 
-.formContainer{
-    padding: 40px;
-    border: 1px solid #DADADA;
-    background-color: #F3F3F3;
-    width: 624px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-bottom: 72px;
+.formContainer {
+  padding: 40px;
+  border: 1px solid #dadada;
+  background-color: #f3f3f3;
+  width: 624px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 72px;
 }
 
 .inputContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.signUpBtn{
-    height: 65px;
-    margin-bottom: 40px;
-    width: 100%;
-    margin-top: 8px;
+.signUpBtn {
+  height: 65px;
+  margin-bottom: 40px;
+  width: 100%;
+  margin-top: 8px;
+}
+.haveAccount {
+  margin-bottom: 40px;
+  align-self: center;
+}
 
+
+/* DarkTheme */
+
+
+.darkContainer {
+    background-color: #313037;
+    color: #ffffff;
   
-}
-.haveAccount{
-    margin-bottom: 40px;
-    align-self: center;
+  }
+
+.darkContainer .formContainer{
+    background-color: #313037;
+    border: 1px solid #8d8e97;
 }

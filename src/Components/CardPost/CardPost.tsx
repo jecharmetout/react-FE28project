@@ -10,16 +10,21 @@ import {
   BookMarksIcon
 } from "../../Assets/Icons";
 import { CardPostProps } from "./types";
+import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
 
 const CardPost: FC<CardPostProps> = ({ post, size }) => {
   const { image, text, date, title } = post;
+
+  const { theme } = useThemeContext();
+
   return (
     <>
       <div
         className={classNames(styles.post, {
           [styles.largePost]: size === CardSize.Large,
           [styles.mediumPost]: size === CardSize.Medium,
-          [styles.smallPost]: size === CardSize.Small
+          [styles.smallPost]: size === CardSize.Small,
+          [styles.darkContainer]: theme === Theme.Dark,
         })}
       >
         <div className={styles.textImgWrap}>

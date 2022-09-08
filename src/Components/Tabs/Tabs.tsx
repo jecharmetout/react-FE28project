@@ -2,109 +2,38 @@ import { allowedNodeEnvironmentFlags } from "process";
 import React, { useState, FC, MouseEvent } from "react";
 //@ts-ignore
 import styles from "./Tabs.module.css";
+import classNames from "classnames";
 
-const TABS_NAME = [
-  {
-    key: "all",
-    title: "All"
-  },
-  {
-    key: "myFavorites",
-    title: "My favorites"
-  },
-  {
-    key: "popular",
-    title: "Popular"
-  },
-  {
-    key: "disabled",
-    title: "Disabled"
-  }
-];
-// type TabsPropsType = {
-//   onClick: (value:string) => void;
+import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
+import {TabsProps} from './types'
 
-// }
-const Tabs =  () => {
-  // const [value, setValue] = React.useState(0);
-  // const actArray = [];
-  // for (let i = 0; i < 4; i++) {
-  //   if (i === value) {
-  //     actArray.push("btn active");
-  //   } else {
-  //     actArray.push("btn");
-  //   }
-  // }
-  const targetTabs = (evt:MouseEvent<HTMLButtonElement>) =>{
-    console.log(evt.target)
+const Tabs: FC<TabsProps> = ({ tabs }) => {
+  const targetTabs = (evt: MouseEvent<HTMLButtonElement>) => {
+    console.log(evt.target);
+  };
+  const { theme } = useThemeContext();
 
-  }
   return (
-    <div className={`${styles.wrapper} ${styles.wrapperTabs}`}>
+    <div
+      className={classNames(styles.wrapper, styles.wrapperTabs, {
+        [styles.darkContainer]: theme === Theme.Dark
+      })}
+    >
       <ul className={styles.tabList}>
-        {TABS_NAME.map((tab) => {
-          if(tab.key!=='disabled'){
-            return <li key={tab.key}><button onClick={targetTabs}>{tab.title}</button></li>
-          }else{
-            return <li key={tab.key}><button onClick={targetTabs} disabled>{tab.title}</button></li>
-          }
-        }
-          
-           
-          
-      )}
-
-        {/* <li>
-          <button
-            type="button"
-            className={actArray[0]}
-            onClick={() => {
-              setValue(0);
-            }}
-          >
-            All
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            className={actArray[1]}
-            onClick={() => {
-              setValue(1);
-            }}
-          >
-            My favorites
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            className={actArray[2]}
-            disabled
-            onClick={() => {
-              setValue(2);
-            }}
-          >
-            Disabled
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            className={actArray[3]}
-            onClick={() => {
-              setValue(3);
-            }}
-          >
-            Popular
-          </button>
-        </li> */}
+        {tabs.map(tab => {
+          return (
+            <li key={tab.key}>
+              <button onClick={targetTabs} disabled={tab.disabled}>
+                {tab.title}
+              </button>
+            </li>
+          );
+        })}
       </ul>
       <br />
       <br />
-      {/* <div>
-        <h2>TAB NO: {value + 1}</h2>
-      </div> */}
+
     </div>
   );
 };

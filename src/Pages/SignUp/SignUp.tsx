@@ -1,10 +1,15 @@
 import React, { FC, useState, useEffect } from "react";
 //@ts-ignore
 import styles from "./SignUp.module.css";
+import classNames from "classnames";
+
+
 import Title from "../../Components/Title";
 import Input from "../../Components/Input";
 import Button, { ButtonType } from "../../Components/Button";
 import Label from "../../Components/Label";
+import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
+
 
 const validateEmail = (email: string) => {
   return String(email)
@@ -28,6 +33,10 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
+
+
+  const { theme} = useThemeContext();
+
 
   useEffect(() => {
     if (emailTouched && !validateEmail(email)) {
@@ -71,7 +80,9 @@ const SignUp = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, {
+      [styles.darkContainer]: theme === Theme.Dark
+    })} >
       <div className={styles.headForm}>
         <div>Back to Home</div>
         <Title title={"Sign Up"} />

@@ -1,12 +1,15 @@
 .post {
   display: flex;
+  border-bottom: 1px solid rgba(218, 218, 218, 1);
+  /* box-sizing: border-box; */
+  padding-bottom: 40px;
 }
 .largePost {
   max-width: 736px;
-  /* background-color: goldenrod; */
-  margin-bottom: 39.5px;
   flex-direction: column;
   justify-content: space-between;
+  /* margin-bottom: 40px; */
+  /* padding-bottom: 40px; */
 }
 .textImgWrap {
   margin-bottom: 35px;
@@ -16,12 +19,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: start;
-  margin-bottom: 31.5px;
+  margin-bottom: 33px;
 }
 .mediumPost .textImgWrap {
   display: flex;
   flex-direction: column-reverse;
-  margin-bottom: 28px;
+  margin-bottom: 30px;
   justify-content: center;
   align-items: center;
 }
@@ -35,35 +38,31 @@
 .mediumPost {
   width: 352px;
   /* margin: 0 15px; */
-
+  padding-top: 40px;
+  margin-right: 32px;
   /* background-color: bisque; */
   flex-direction: column;
   flex-wrap: wrap;
-  border-bottom: 1px solid rgba(218, 218, 218, 1);
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 }
 .mediumPost:nth-last-child(1),
 .mediumPost:nth-last-child(2) {
-  margin-bottom: 0px;
-
 }
 
 .smallPost {
   max-width: 354px;
-  margin-bottom: 38px;
-
+  /* margin-bottom: 40px; */
+  padding-top: 40px;
   /* background-color: navajowhite; */
   flex-direction: column;
-  border-bottom: 1px solid rgba(218, 218, 218, 1);
   justify-content: center;
   align-items: center;
 }
 .smallPost:last-child {
-  border-bottom: none;
   margin-bottom: 0;
 }
 .smallPost:first-child {
-
+  padding-top: 0px;
 }
 
 /* Content Wrapper for text, title and date */
@@ -73,7 +72,7 @@
   margin-right: 32px;
 }
 .mediumPost .contentWrapper {
-  /* width: 352px; */
+  width: 352px;
 }
 .smallPost .contentWrapper {
   width: 222px;
@@ -111,7 +110,7 @@
 .mediumPost .imgWrapper {
   width: 352px;
   height: 246px;
-  margin-bottom: 24px;
+  margin-bottom: 25px;
   align-self: center;
 }
 .smallPost .imgWrapper {
@@ -123,8 +122,6 @@
 
 .date {
   color: rgba(141, 142, 151, 1);
-  font-family: "Inter";
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -132,8 +129,6 @@
 }
 .title {
   color: rgba(49, 48, 55, 1);
-  font-family: "Inter";
-  font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 28px;
@@ -148,18 +143,20 @@
   color: rgba(141, 142, 151, 1);
   font-size: 16px;
   font-weight: 400;
-  font-family: "Inter";
   line-height: 28px;
 }
+
 /* Icons */
+
 .iconsWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 352px;
 }
-.mediumPost .iconsWrapper, .smallPost .iconsWrapper {
-  margin-bottom: 40px;
+.mediumPost .iconsWrapper,
+.smallPost .iconsWrapper {
+  /* margin-bottom: 40px; */
 }
 
 .largePost .iconsWrapper {
@@ -168,7 +165,28 @@
 
 .iconsThumb :first-child {
   margin-right: 52px;
+  cursor: pointer;
 }
 .iconsOptions :first-child {
   margin-right: 30px;
+  cursor: pointer;
+}
+
+/* DarkTheme */
+
+.darkContainer {
+  border-bottom: 1px solid #8d8e97;
+}
+
+.darkContainer svg > path {
+  fill: white;
+}
+.darkContainer .date {
+  color: #8d8e97;
+}
+.darkContainer .title {
+  color: white;
+}
+.darkContainer .textWrapper {
+  color: #8d8e97;
 }

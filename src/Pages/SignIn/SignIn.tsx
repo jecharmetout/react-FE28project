@@ -1,10 +1,12 @@
 import React, { FC, useState, useEffect } from "react";
 //@ts-ignore
 import styles from "./SignIn.module.css";
+import classNames from "classnames";
 import Title from "../../Components/Title";
 import Input from "../../Components/Input";
 import Button, { ButtonType } from "../../Components/Button";
 import Label from "../../Components/Label";
+import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
 
 const validateEmail = (email: string) => {
   return String(email)
@@ -22,6 +24,8 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [passwordTouched, setPasswordTouched] = useState(false);
+
+  const { theme} = useThemeContext();
 
   useEffect(() => {
     if (emailTouched && !validateEmail(email)) {
@@ -41,12 +45,10 @@ const SignIn = () => {
 
   const onBlurEmail = () => {
     setEmailTouched(true);
-
-     };
+  };
 
   const onBlurPassword = () => {
     setPasswordTouched(true);
-   
   };
 
   const onChangeEmail = (value: string) => {
@@ -55,7 +57,11 @@ const SignIn = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={classNames(styles.container, {
+        [styles.darkContainer]: theme === Theme.Dark
+      })}
+    >
       <div className={styles.headForm}>
         <div>Back to Home</div>
         <Title title={"Sign In"} />
@@ -82,9 +88,10 @@ const SignIn = () => {
             value={password}
             error={!!passwordError}
           />
-          {passwordTouched && passwordError && <div>{passwordError}</div>}
+          {passwordTouched && passwordError && <div className={classNames(styles.passwordError)} >{passwordError}</div>}
+          <div className={classNames(styles.forgotPassword)}>Forgot password?</div>
         </div>
-
+        
         <div>
           <Button
             type={ButtonType.Primary}

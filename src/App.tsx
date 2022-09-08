@@ -14,7 +14,9 @@ import Footer from "./Components/Footer";
 import SignUp from "./Pages/SignUp";
 import SignIn from "./Pages/SignIn";
 import Search from "./Pages/Search";
-import ThemeProvider from './Context/ThemeContext/Provider'
+import Blog from "./Pages/Blog";
+import ThemeProvider from "./Context/ThemeContext/Provider";
+import { Theme } from "./Context/ThemeContext/Context";
 
 function App() {
   const [value, setValue] = useState<string>("");
@@ -24,109 +26,19 @@ function App() {
   };
   const [isOpened, setOpened] = useState(false);
   const [isDark, setDark] = useState(false);
-
+  const [theme, setTheme] = useState(Theme.Light);
+  const onChangeTheme = () => {
+    const themeValue = theme === Theme.Light ? Theme.Dark : Theme.Light;
+    setTheme(themeValue);
+  };
   return (
-    // <div className={styles.app}>
-    //   <Navbar
-    //     onClick={() => setOpened(!isOpened)}
-    //     title={isOpened ? <CancelIcon/> : <MenuIcon/>}
-    //     input={
-    //       isOpened ? null : (
-    //         <Input
-    //           placeholder={"Placeholder"}
-    //           onChange={onChange}
-    //           value={value}
-    //         />
-    //       )
-    //     }
-    //   />
-    //   {isOpened && <Menu/>}
-    //   <Input
-    //     placeholder={"Placeholder"}
-    //     onChange={onChange}
-    //     value={value}
-    //     // disabled={true}
-    //     // error={true}
-    //   />
-    //   <div className={styles.wrapper}>
-    //   <CardList/>
-    //   </div>
-
-    //   <div className={styles.wrapper}>
-    //     <Button
-    //       type={ButtonType.Primary}
-    //       title={"Primary"}
-    //       onClick={() => {
-    //         console.log("primary");
-    //       }}
-    //       className={styles.primary}
-    //       disabled={false}
-    //     />
-    //     <Button
-    //       type={ButtonType.Primary}
-    //       title={"Primary"}
-    //       onClick={() => {
-    //         console.log("primary");
-    //       }}
-    //       className={styles.primary}
-    //       disabled={true}
-    //     />
-    //     <Button
-    //       type={ButtonType.Secondary}
-    //       title={"Secondary"}
-    //       onClick={() => {
-    //         console.log("secondary");
-    //       }}
-    //       className={styles.secondary}
-    //       disabled={false}
-    //     />
-    //     <Button
-    //       type={ButtonType.Secondary}
-    //       title={"Secondary"}
-    //       onClick={() => {
-    //         console.log("secondary");
-    //       }}
-    //       className={styles.secondary}
-    //       disabled={true}
-    //     />
-    //     <Button
-    //       type={ButtonType.Error}
-    //       title={"Error"}
-    //       onClick={() => {
-    //         console.log("error");
-    //       }}
-    //       className={styles.error}
-    //       disabled={false}
-    //     />
-    //     <Button
-    //       type={ButtonType.Error}
-    //       title={"Error"}
-    //       onClick={() => {
-    //         console.log("error");
-    //       }}
-    //       className={styles.error}
-    //       disabled={true}
-    //     />
-    //   </div>
-
-    //   <div className={styles.wrapper}>
-    //     <User userName={"Artem Malkin"} />
-    //   </div>
-
-    //   <Tabs />
-
-    //   <div className={`${styles.wrapper}`}>
-    //     <Title title={"Sign In"} />
-    //   </div>
-    //   <Footer/>
-    // </div>
-    <div className={styles.app}>
-      <div className={styles.navbarMenu}>
+    <ThemeProvider theme={theme} onChangeTheme={onChangeTheme}>
+      {/* <div className={styles.app}>
         <Navbar
           onClick={() => setOpened(!isOpened)}
-          isOpened={isOpened}
+          title={isOpened ? <CancelIcon /> : <MenuIcon />}
           input={
-            isOpened && (
+            isOpened ? null : (
               <Input
                 placeholder={"Placeholder"}
                 onChange={onChange}
@@ -134,18 +46,114 @@ function App() {
               />
             )
           }
-          changeThemeOnClick={() => setDark(!isDark)}
-          isDark={isDark}
         />
         {isOpened && <Menu />}
+        <Input
+          placeholder={"Placeholder"}
+          onChange={onChange}
+          value={value}
+          // disabled={true}
+          // error={true}
+        />
+        <div className={styles.wrapper}>
+          <CardList />
+        </div>
+
+        <div className={styles.wrapper}>
+          <Button
+            type={ButtonType.Primary}
+            title={"Primary"}
+            onClick={() => {
+              console.log("primary");
+            }}
+            className={styles.primary}
+            disabled={false}
+          />
+          <Button
+            type={ButtonType.Primary}
+            title={"Primary"}
+            onClick={() => {
+              console.log("primary");
+            }}
+            className={styles.primary}
+            disabled={true}
+          />
+          <Button
+            type={ButtonType.Secondary}
+            title={"Secondary"}
+            onClick={() => {
+              console.log("secondary");
+            }}
+            className={styles.secondary}
+            disabled={false}
+          />
+          <Button
+            type={ButtonType.Secondary}
+            title={"Secondary"}
+            onClick={() => {
+              console.log("secondary");
+            }}
+            className={styles.secondary}
+            disabled={true}
+          />
+          <Button
+            type={ButtonType.Error}
+            title={"Error"}
+            onClick={() => {
+              console.log("error");
+            }}
+            className={styles.error}
+            disabled={false}
+          />
+          <Button
+            type={ButtonType.Error}
+            title={"Error"}
+            onClick={() => {
+              console.log("error");
+            }}
+            className={styles.error}
+            disabled={true}
+          />
+        </div>
+
+        <div className={styles.wrapper}>
+          <User userName={"Artem Malkin"} />
+        </div>
+
+        <Tabs />
+
+        <div className={`${styles.wrapper}`}>
+          <Title title={"Sign In"} />
+        </div>
+        <Footer />
+      </div> */}
+      <div className={classNames(styles.app, {[styles.darkContainer]:theme===Theme.Dark})}>
+        <div className={styles.navbarMenu}>
+          <Navbar
+            onClick={() => setOpened(!isOpened)}
+            isOpened={isOpened}
+            input={
+              isOpened && (
+                <Input
+                  placeholder={"Placeholder"}
+                  onChange={onChange}
+                  value={value}
+                />
+              )
+            }
+            changeThemeOnClick={() => setDark(!isDark)}
+            isDark={isDark}
+          />
+          {isOpened && <Menu />}
+        </div>
+        <div className={classNames(styles.contentWrapper)}></div>
+        {/* <Search /> */}
+        {/* <SignUp /> */}
+        {/* <SignIn /> */}
+        <Blog/>
+        <Footer />
       </div>
-      <div className={classNames(styles.contentWrapper)}></div>
-      <Search />
-      {/* <SignUp />
-      <SignIn />
-      <CardList/> */}
-      <Footer />
-    </div>
+    </ThemeProvider>
   );
 }
 

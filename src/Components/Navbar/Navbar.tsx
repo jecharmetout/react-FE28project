@@ -3,6 +3,7 @@ import React, { FC, useState } from "react";
 //@ts-ignore
 import styles from "./Navbar.module.css";
 import User from "../User/User";
+
 import {
   MenuIcon,
   CancelIcon,
@@ -11,8 +12,17 @@ import {
   MoonIcon
 } from "../../Assets/Icons";
 import classNames from "classnames";
+import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
 
-const Navbar = ({ onClick, input, isOpened, isDark, changeThemeOnClick }: any) => {
+const Navbar = ({
+  onClick,
+  input,
+  isOpened,
+  isDark,
+  changeThemeOnClick
+}: any) => {
+  const { theme, onChangeTheme } = useThemeContext();
+
   return (
     <nav className={styles.nav}>
       <div className={styles.burgerButton} onClick={onClick}>
@@ -20,8 +30,13 @@ const Navbar = ({ onClick, input, isOpened, isDark, changeThemeOnClick }: any) =
       </div>
       {input}
       <div className={styles.userSearchWrapper}>
-        <div className={classNames(styles.sunIcon)} onClick={changeThemeOnClick}>
-          {isDark ? <MoonIcon /> : <SunIcon />}
+        <div
+          className={classNames(styles.sunIcon)}
+          onClick={onChangeTheme}
+          // onClick={changeThemeOnClick}
+
+        >
+          {theme === Theme.Dark ?  <SunIcon /> : <MoonIcon /> }
         </div>
         <div
           className={styles.searchIcon}
