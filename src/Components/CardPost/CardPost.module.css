@@ -132,6 +132,10 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 28px;
+  cursor: pointer;
+}
+.title:hover{
+  color: #2231AA;
 }
 .largePost .title {
   font-weight: 700;
