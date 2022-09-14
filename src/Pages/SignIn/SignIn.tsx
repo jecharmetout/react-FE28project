@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
+import {Link} from 'react-router-dom'
 //@ts-ignore
 import styles from "./SignIn.module.css";
 import classNames from "classnames";
@@ -7,6 +8,7 @@ import Input from "../../Components/Input";
 import Button, { ButtonType } from "../../Components/Button";
 import Label from "../../Components/Label";
 import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
+import { PathNames } from "../../Pages/Router/Router";
 
 const validateEmail = (email: string) => {
   return String(email)
@@ -105,7 +107,7 @@ const SignIn = () => {
         </div>
 
         <div className={styles.haveAccount}>
-          Don’t have an account? <a href="">Sign Up</a>
+          Don’t have an account? <Link to={PathNames.SignUp}>Sign Up</Link>
         </div>
       </div>
     </div>
