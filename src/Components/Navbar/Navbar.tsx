@@ -19,8 +19,6 @@ const Navbar = ({
   onClick,
   input,
   isOpened,
-  isDark,
-  changeThemeOnClick
 }: any) => {
   const { theme, onChangeTheme } = useThemeContext();
 
@@ -35,7 +33,6 @@ const Navbar = ({
           <div
             className={classNames(styles.sunMoonIcon)}
             onClick={onChangeTheme}
-            // onClick={changeThemeOnClick}
           >
             {theme === Theme.Dark ? <SunIcon /> : <MoonIcon />}
           </div>
