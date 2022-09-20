@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 //@ts-ignore
 
@@ -8,6 +9,7 @@ import classNames from "classnames";
 import CardList from "../../Components/CardList";
 import Title from "../../Components/Title";
 import Tabs from "../../Components/Tabs";
+
 
 const Blog = () => {
   const TABS_NAME = [
@@ -23,15 +25,18 @@ const Blog = () => {
     },
     {
       key: "popular",
-      title: "Popular",
-    //   disabled: true,
+      title: "Popular"
+      //   disabled: true,
     }
   ];
+
+
   return (
     <div>
       <Title title={"Blog"} />
       <Tabs tabs={TABS_NAME} />
       <CardList />
+
     </div>
   );
 };

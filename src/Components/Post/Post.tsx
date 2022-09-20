@@ -1,4 +1,6 @@
 import React, { FC } from "react";
+// import { useParams } from "react-router-dom";
+
 //@ts-ignore
 import styles from "./Post.module.css";
 import classNames from "classnames";
@@ -11,6 +13,8 @@ const Post: FC<PostProps> = ({ post }) => {
   const { image, text, title } = post;
 
   const { theme } = useThemeContext();
+  // const params = useParams()
+  // console.log(params)
 
   return (
     <>

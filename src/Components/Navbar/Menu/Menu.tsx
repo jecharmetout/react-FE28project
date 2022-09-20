@@ -26,15 +26,19 @@ const Menu = ()=>{
           <User userName={"Artem Malkin"} />
         </li>
         <li><NavLink to={PathNames.Home} className={classNames({
-          [styles.activeLink]: location.pathname === PathNames.Home
+          [styles.activeLink]: location.pathname === PathNames.Home,
+          [styles.inactiveLink]: location.pathname !== PathNames.Home
         })}>Home</NavLink></li>
-        <li><NavLink to={PathNames.PostContent} className={classNames({
-          [styles.activeLink]: location.pathname === PathNames.PostContent
-        })}>Content</NavLink></li>
         <li><NavLink to={PathNames.Search} className={classNames({
-          [styles.activeLink]: location.pathname === PathNames.Search
+          [styles.activeLink]: location.pathname === PathNames.Search,
+          [styles.inactiveLink]: location.pathname != PathNames.Search,
         })}>Search</NavLink></li>
-        <li>Add post</li>
+        <li><NavLink to={PathNames.PostContent} className={classNames({
+          [styles.activeLink]: location.pathname === PathNames.PostContent,
+          [styles.inactiveLink]: location.pathname != PathNames.PostContent,
+        })}>Add post</NavLink></li>
+        
+        <li><NavLink to={PathNames.SignIn} className={styles.signIn}>SignIn</NavLink></li>
       </ul>
     )
 }

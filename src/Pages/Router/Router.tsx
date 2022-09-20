@@ -6,7 +6,8 @@ import PostContent from "../PostContent";
 import Search from "../Search";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
-import {NavLink} from 'react-router-dom'
+
+
 
 
 
@@ -16,11 +17,14 @@ export enum PathNames{
     SignIn='/sign-in',
     SignUp='/sign-up',
     Search='/search',
-    PostContent='/content',
+    PostContent='/posts/:id',
+    NewPost='/add',
+
 }
 
 
 const Router = () => {
+ 
   return (
     <BrowserRouter>
       <Routes>
@@ -28,7 +32,9 @@ const Router = () => {
           <Route path={PathNames.SignIn} element={<SignIn />} />
           <Route path={PathNames.SignUp} element={<SignUp />} />
           <Route path={PathNames.Search} element={<Search />} />
+          <Route path={PathNames.NewPost} element={<PostContent />} />
           <Route path={PathNames.PostContent} element={<PostContent />} />
+
         </Route>
         <Route path={'*'} element={<Navigate to={PathNames.SignIn}/>} />
 

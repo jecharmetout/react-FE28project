@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 
 // @ts-ignore
@@ -12,7 +12,6 @@ import { changeTheme } from "./Redux/reducers/themeReducer";
 import ThemeSelectors from "./Redux/selectors/themeSelectors";
 
 
-
 const App = () => {
   const theme = useSelector(ThemeSelectors.getTheme);
   const dispatch = useDispatch();
@@ -20,6 +19,7 @@ const App = () => {
   const onChangeTheme = () => {
     dispatch(changeTheme());
   };
+  
   return (
     <ThemeProvider theme={theme} onChangeTheme={onChangeTheme}>
       <Router />
