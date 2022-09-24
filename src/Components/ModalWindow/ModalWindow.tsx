@@ -4,54 +4,35 @@ import PostsSelectors from "../../Redux/selectors/postsSelectors";
 //@ts-ignore
 import styles from "./ModalWindow.module.css";
 import classNames from "classnames";
-import {
-  ThumbDownIcon,
-  ThumbUpIcon,
-  Ellipsis,
-  BookMarksIcon,
-  CancelIcon
-} from "../../Assets/Icons";
+import { CancelIcon} from "../../Assets/Icons";
 import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
 
-const ModalWindow = ({ active, closeModal }: any) => {
-  const { theme } = useThemeContext();
-  const ModalPost = useSelector(PostsSelectors.getSelectedPost);
+const ModalWindow = ({ active, closeModal, children }: any) => {
 
-  const { image, text, date, title, id } = ModalPost;
+
+  const { theme } = useThemeContext(); 
+  const postModal = useSelector(PostsSelectors.getIsModalVisible);
+  const imgModal = useSelector(PostsSelectors.getIsImgVisible);
+
+
+
   return (
-    <>
+
       <div
         className={classNames(styles.modalPost, {
-          [styles.modalActive]: active === true
+          [styles.modalActive]: active,
+          [styles.darkContainer]: theme === Theme.Dark,
         })}
-        onClick={closeModal}
+        
       >
-        <div className={styles.cancelButton}><CancelIcon/></div>
-        <div className={styles.textImgWrap}>
-          <div className={styles.contentWrapper}>
-            <div className={styles.titleWrapper}>
-              <div className={styles.date}>{date}</div>
-              <div className={styles.title}>{title}</div>
-            </div>
-
-            <div className={styles.textWrapper}>{text}</div>
-          </div>
-          <div className={styles.imgWrapper}>
-            <img src={image} alt="img" />
-          </div>
-        </div>
-        <div className={styles.iconsWrapper}>
-          <div className={styles.iconsThumb}>
-            <ThumbUpIcon />
-            <ThumbDownIcon />
-          </div>
-          <div className={styles.iconsOptions}>
-            <BookMarksIcon />
-            <Ellipsis />
-          </div>
-        </div>
+        <div className={styles.cancelButton} onClick={closeModal}><CancelIcon/></div>
+       
+        <div className={classNames({
+          [styles.modalContent]: postModal,
+          [styles.modalContentImg]: imgModal,
+        })}> {children}</div>
       </div>
-    </>
+
   );
 };
 export default ModalWindow;

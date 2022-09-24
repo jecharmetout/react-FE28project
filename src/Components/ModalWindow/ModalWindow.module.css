@@ -1,116 +1,56 @@
 .modalPost {
-  display: flex;
   border-bottom: 1px solid rgba(218, 218, 218, 1);
-  padding-bottom: 40px;
-  max-width: 736px;
+  padding: 17px 21px 54px;
+  max-width: 886px;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 50px;
+  width: 886px;
+  height: 588px;
   display: none;
-  /* position: fixed;
-  background-color: rgba(0, 0, 0, 0.4);
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  left: 0;
-  z-index: 1000; */
-   
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: #ffffff;
 }
-.textImgWrap {
-  margin-bottom: 35px;
+
+.cancelButton > svg > path {
+  fill: grey;
+}
+.cancelButton {
+  align-self: flex-end;
+  margin-bottom:45px;
+  cursor: pointer;
+}
+
+/* ModalActive */
+
+.modalActive {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: start;
-  margin-bottom: 33px;
+  justify-content: center;
+  align-items: center;
 }
-.contentWrapper {
-  width: 448px;
-  margin-right: 32px;
+.modalContent {
+  width: 736px;
+  height: 455px;
+  margin: auto;
+
 }
-.titleWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 24px;
+.darkContainer {
+  background-color: #383535;
 }
-.imgWrapper {
+
+.modalContentImg {
+  width: 329px;
+  height: 314px;
+  margin: auto;
   justify-content: center;
   align-items: center;
   display: flex;
   overflow: hidden;
-  width: 256px;
-  height: 244px;
 }
-
-.imgWrapper img {
+.modalContentImg > img{
   width: 100%;
   height: 100%;
-}
-
-.date {
-  color: rgba(141, 142, 151, 1);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  margin-bottom: 8px;
-}
-.title {
-  color: rgba(49, 48, 55, 1);
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 44px;
-  cursor: pointer;
-}
-.textWrapper {
-  color: rgba(141, 142, 151, 1);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-}
-
-.cancelButton{
-  align-self: flex-end;
-  margin-bottom: 35px;
-  cursor: pointer;
-}
-.cancelButton>svg>path{
-  fill: grey;
-}
-.iconsWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.iconsThumb :first-child {
-  margin-right: 52px;
-  cursor: pointer;
-}
-.iconsOptions :first-child {
-  margin-right: 30px;
-  cursor: pointer;
-}
-/* DarkTheme */
-
-.darkContainer {
-  border-bottom: 1px solid #8d8e97;
-}
-
-.darkContainer svg > path {
-  fill: white;
-}
-.darkContainer .date {
-  color: #8d8e97;
-}
-.darkContainer .title {
-  color: white;
-}
-.darkContainer .title:hover {
-  text-shadow: 1px -1px 4px white;
-}
-.darkContainer .textWrapper {
-  color: #8d8e97;
 }

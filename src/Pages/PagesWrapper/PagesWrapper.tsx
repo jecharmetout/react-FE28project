@@ -12,6 +12,8 @@ import Blog from "../../Pages/Blog";
 import {PathNames }from "../Router/Router";
 
 import { Theme, useThemeContext } from "../../Context/ThemeContext/Context";
+import { useSelector } from "react-redux";
+import PostsSelectors from '../../Redux/selectors/postsSelectors'
 
 const PagesWrapper = () => {
   const [value, setValue] = useState<string>("");
@@ -25,12 +27,15 @@ const PagesWrapper = () => {
   const { theme } = useThemeContext();
 
   const location = useLocation();
+  const isVisible = useSelector(PostsSelectors.getIsModalVisible);
+  const imgModal = useSelector(PostsSelectors.getIsImgVisible);
 
 
   return (
     <div
       className={classNames(styles.app, {
-        [styles.darkContainer]: theme === Theme.Dark
+        [styles.darkContainer]: theme === Theme.Dark,
+        [styles.modalActive]: isVisible || imgModal,
       })}
     >
       <Navbar

@@ -16,9 +16,8 @@ const themeSlice = createSlice({
   }
 });
 
-// const actions = themeSlice.actions
-// export const {changeTheme} = actions
-export const {changeTheme} = themeSlice.actions
+const actions =themeSlice.actions
+export const {changeTheme} = actions
 
 
 
