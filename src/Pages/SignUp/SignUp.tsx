@@ -11,6 +11,8 @@ import Button, { ButtonType } from "../../Components/Button";
 import Label from "../../Components/Label";
 import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
 import { PathNames } from "../../Pages/Router/Router";
+import { useDispatch } from "react-redux";
+import { createNewUser } from "../../Redux/reducers/authReducer";
 
 
 const validateEmail = (email: string) => {
@@ -22,6 +24,7 @@ const validateEmail = (email: string) => {
 };
 
 const SignUp = () => {
+  const dispatch = useDispatch()
   const [name, setName] = useState("");
 
   const [email, setEmail] = useState("");
@@ -78,6 +81,9 @@ const SignUp = () => {
     setConfirmPasswordTouched(true);
   };
 
+  const onSignUp = ()=>{
+    dispatch(createNewUser({username:name, email, password}))
+  }
   return (
     <div
       className={classNames(styles.container, {
@@ -135,9 +141,7 @@ const SignUp = () => {
           <Button
             type={ButtonType.Primary}
             title={"Sign Up"}
-            onClick={() => {
-              console.log("primary");
-            }}
+            onClick={onSignUp}
             className={styles.signUpBtn}
             disabled={false}
           />

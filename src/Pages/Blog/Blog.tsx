@@ -5,7 +5,7 @@ import CardList from "../../Components/CardList";
 import Title from "../../Components/Title";
 import Tabs from "../../Components/Tabs";
 import { TabsNames } from "../../Utils/globalTypes";
-import { setActiveTab, setCardsList } from "../../Redux/reducers/postsReducer";
+import { getPosts, setActiveTab, setCardsList } from "../../Redux/reducers/postsReducer";
 //@ts-ignore
 import styles from "./Blog.module.css";
 import PostsSelectors from "../../Redux/selectors/postsSelectors";
@@ -163,7 +163,8 @@ const Blog = () => {
   };
 
   useEffect(() => {
-    dispatch(setCardsList(POST_MOCK));
+    // dispatch(setCardsList(POST_MOCK));
+    dispatch(getPosts());
   }, []);
 
   return (
