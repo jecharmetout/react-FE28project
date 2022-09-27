@@ -11,8 +11,8 @@ const ModalWindow = ({ active, closeModal, children }: any) => {
 
 
   const { theme } = useThemeContext(); 
-  const postModal = useSelector(PostsSelectors.getIsModalVisible);
-  const imgModal = useSelector(PostsSelectors.getIsImgVisible);
+  const ispostModalVisible = useSelector(PostsSelectors.getIsModalVisible);
+  const isImgModalVisible = useSelector(PostsSelectors.getIsImgVisible);
 
 
 
@@ -28,8 +28,8 @@ const ModalWindow = ({ active, closeModal, children }: any) => {
         <div className={styles.cancelButton} onClick={closeModal}><CancelIcon/></div>
        
         <div className={classNames({
-          [styles.modalContent]: postModal,
-          [styles.modalContentImg]: imgModal,
+          [styles.modalContent]: ispostModalVisible,
+          [styles.modalContentImg]: isImgModalVisible,
         })}> {children}</div>
       </div>
 

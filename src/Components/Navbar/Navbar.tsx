@@ -14,13 +14,15 @@ import {
 } from "../../Assets/Icons";
 import classNames from "classnames";
 import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
+import Input from "../Input";
 
-const Navbar = ({
-  onClick,
-  input,
-  isOpened,
-}: any) => {
+const Navbar = ({ onClick, isOpened }: any) => {
   const { theme, onChangeTheme } = useThemeContext();
+  const [value, setValue] = useState<string>("");
+
+  const onChange = (inputValue: string) => {
+    setValue(inputValue);
+  };
 
   return (
     <div className={classNames(styles.navbarMenu)}>
@@ -28,7 +30,13 @@ const Navbar = ({
         <div className={styles.burgerButton} onClick={onClick}>
           {isOpened ? <CancelIcon /> : <MenuIcon />}
         </div>
-        {input}
+        {isOpened && (
+          <Input
+            placeholder={"Placeholder"}
+            onChange={onChange}
+            value={value}
+          />
+        )}
         <div className={styles.userSearchWrapper}>
           <div
             className={classNames(styles.sunMoonIcon)}

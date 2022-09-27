@@ -7,7 +7,6 @@ function* getPostsWorker(){
     const { data, status, problem } = yield call(Api.getPostsList);
     if (status === 200 && data) {
       yield put(setCardsList(data.results));
-      console.log(data);
 
     } else {
       console.log(problem);
