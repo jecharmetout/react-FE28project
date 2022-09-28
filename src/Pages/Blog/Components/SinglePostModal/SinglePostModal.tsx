@@ -11,6 +11,8 @@ const SinglePostModal = () => {
 
   const isVisible = useSelector(PostsSelectors.getIsModalVisible);
 
+  const ispostModalVisible = useSelector(PostsSelectors.getIsModalVisible);
+
   const dispatch = useDispatch();
 
   const onClose = (event:any) => {
@@ -20,7 +22,7 @@ const SinglePostModal = () => {
 
   };
   return post?(
-    <ModalWindow active={isVisible} closeModal={onClose}>
+    <ModalWindow active={isVisible} closeModal={onClose} ispostModalVisible={ispostModalVisible}>
       <CardPost size={CardSize.Large} post={post} />
     </ModalWindow>
   ):null;

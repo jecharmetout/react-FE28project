@@ -82,7 +82,7 @@ const SignUp = () => {
   };
 
   const onSignUp = ()=>{
-    dispatch(createNewUser({username:name, email, password}))
+    dispatch(createNewUser({username: name, email, password}))
   }
   return (
     <div

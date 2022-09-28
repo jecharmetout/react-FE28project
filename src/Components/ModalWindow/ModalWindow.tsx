@@ -7,12 +7,10 @@ import classNames from "classnames";
 import { CancelIcon} from "../../Assets/Icons";
 import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
 
-const ModalWindow = ({ active, closeModal, children }: any) => {
+const ModalWindow = ({ active, closeModal, children, ispostModalVisible, isImgModalVisible }: any) => {
 
 
   const { theme } = useThemeContext(); 
-  const ispostModalVisible = useSelector(PostsSelectors.getIsModalVisible);
-  const isImgModalVisible = useSelector(PostsSelectors.getIsImgVisible);
 
 
 
