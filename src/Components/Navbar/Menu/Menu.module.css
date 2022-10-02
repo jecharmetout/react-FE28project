@@ -8,11 +8,8 @@
   margin-bottom: 30px;
   border-top: 1px solid rgb(83, 96, 205);
   position: absolute;
-  top: 85px;
+  top: 84px;
   transition: 0.1ms;
-
-  
-
 }
 
 .listMenu li {
@@ -44,9 +41,6 @@
 .listMenu li:hover {
   box-shadow: 4px 3px 15px 1px #9c9cee;
 }
-/* .listMenu :first-child {
-  padding: 0;
-} */
 
 /* activelink */
 

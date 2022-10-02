@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 //@ts-ignore
 import styles from "./SignUp.module.css";
@@ -84,6 +84,12 @@ const SignUp = () => {
   const onSignUp = ()=>{
     dispatch(createNewUser({username: name, email, password}))
   }
+
+  const navigate = useNavigate();
+
+  const onBackHomeClick = () => {
+    navigate(PathNames.Home);
+  };
   return (
     <div
       className={classNames(styles.container, {
@@ -91,7 +97,7 @@ const SignUp = () => {
       })}
     >
       <div className={styles.headForm}>
-        <div>Back to Home</div>
+        <div className={styles.backHomeBtn} onClick={onBackHomeClick}>Back to Home</div>
         <Title title={"Sign Up"} />
       </div>
       <div className={styles.formContainer}>

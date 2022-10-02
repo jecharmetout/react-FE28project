@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
 //@ts-ignore
 import styles from "./SignIn.module.css";
 import classNames from "classnames";
@@ -27,7 +27,7 @@ const SignIn = () => {
   const [passwordError, setPasswordError] = useState("");
   const [passwordTouched, setPasswordTouched] = useState(false);
 
-  const { theme} = useThemeContext();
+  const { theme } = useThemeContext();
 
   useEffect(() => {
     if (emailTouched && !validateEmail(email)) {
@@ -53,10 +53,13 @@ const SignIn = () => {
     setPasswordTouched(true);
   };
 
-  const onChangeEmail = (value: string) => {
-    setEmail(value);
-    setEmailTouched(true);
+  const navigate = useNavigate();
+
+  const onBackHomeClick = () => {
+    navigate(PathNames.Home);
   };
+
+ 
 
   return (
     <div
@@ -65,7 +68,7 @@ const SignIn = () => {
       })}
     >
       <div className={styles.headForm}>
-        <div>Back to Home</div>
+        <div className={styles.backHomeBtn} onClick={onBackHomeClick}>Back to Home</div>
         <Title title={"Sign In"} />
       </div>
       <div className={styles.formContainer}>
@@ -90,10 +93,16 @@ const SignIn = () => {
             value={password}
             error={!!passwordError}
           />
-          {passwordTouched && passwordError && <div className={classNames(styles.passwordError)} >{passwordError}</div>}
-          <div className={classNames(styles.forgotPassword)}>Forgot password?</div>
+          {passwordTouched && passwordError && (
+            <div className={classNames(styles.passwordError)}>
+              {passwordError}
+            </div>
+          )}
+          <div className={classNames(styles.forgotPassword)}>
+            Forgot password?
+          </div>
         </div>
-        
+
         <div>
           <Button
             type={ButtonType.Primary}

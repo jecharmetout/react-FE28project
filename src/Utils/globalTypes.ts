@@ -25,3 +25,17 @@ export type UserActionPayload = {
   password: string;
   email: string;
 };
+export enum RegistrationStatus {
+  Success = "success",
+  Failed = "failed",
+  Default = "default"
+}
+
+export type ActivationParams = {
+  uid: string;
+  token: string;
+};
+export type ActivateUserPayload = {
+  params: ActivationParams;
+  callback: (status: RegistrationStatus) => void;
+};

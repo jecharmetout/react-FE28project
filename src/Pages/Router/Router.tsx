@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ActivateUser from "../ActivateUser";
 import Blog from "../Blog";
 import PagesWrapper from "../PagesWrapper";
 import PostContent from "../PostContent";
@@ -19,6 +20,7 @@ export enum PathNames{
     Search='/search',
     PostContent='/posts/:id',
     NewPost='/add',
+    ActivateUser = '/activate/:uid/:token',
 
 }
 
@@ -34,6 +36,7 @@ const Router = () => {
           <Route path={PathNames.Search} element={<Search />} />
           <Route path={PathNames.NewPost} element={<PostContent />} />
           <Route path={PathNames.PostContent} element={<PostContent />} />
+          <Route path={PathNames.ActivateUser} element={<ActivateUser />} />
 
         </Route>
         <Route path={'*'} element={<Navigate to={PathNames.SignIn}/>} />

@@ -10,19 +10,33 @@ import {
   CancelIcon,
   SearchIcon,
   SunIcon,
-  MoonIcon
+  MoonIcon,
+  UserIcon
 } from "../../Assets/Icons";
 import classNames from "classnames";
 import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
 import Input from "../Input";
+import { useSelector } from "react-redux";
+import AuthSelectors from "../../Redux/selectors/authSelectors";
+import { useNavigate } from "react-router-dom";
+import { PathNames } from "../../Pages/Router/Router";
 
 const Navbar = ({ onClick, isOpened }: any) => {
+
   const { theme, onChangeTheme } = useThemeContext();
+
+  const currentUser = useSelector(AuthSelectors.getCurrentUser)
+
   const [value, setValue] = useState<string>("");
 
   const onChange = (inputValue: string) => {
     setValue(inputValue);
   };
+  const navigate = useNavigate()
+
+  const onSignInClick = ()=>{
+    navigate(PathNames.SignIn)
+  }
 
   return (
     <div className={classNames(styles.navbarMenu)}>
@@ -52,7 +66,7 @@ const Navbar = ({ onClick, isOpened }: any) => {
           >
             <SearchIcon />
           </div>
-          <User userName={"Artem Malkin"} />
+          {currentUser ? <User userName={"Artem Malkin"} /> : <div className={styles.userIcon} onClick={onSignInClick}><UserIcon/></div>}
         </div>
       </nav>
       {isOpened && <Menu />}

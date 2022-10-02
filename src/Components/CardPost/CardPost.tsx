@@ -30,9 +30,7 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
   const { theme } = useThemeContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const onNavigateToPost = () => {
-    navigate(`/posts/${id}`);
-  };
+  
 
   const favouritePostsList: CardListType = useSelector(
     PostsSelectors.getFavoritePosts
@@ -41,6 +39,10 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
   const currentPostIndex = favouritePostsList.findIndex(post => post.id === id);
   const isFavorite = currentPostIndex !== -1;
 
+
+  const onNavigateToPost = () => {
+    navigate(`/posts/${id}`);
+  };
   const onAddFavourite = (event: any) => {
     event.stopPropagation();
     dispatch(setFavouritePost(post));
@@ -49,6 +51,7 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
   const onStatusClick = (status: LikeStatus) => {
     dispatch(setLikeStatus({ status, id }));
   };
+
   const onOpenPostModal = (event: any) => {
     event.stopPropagation();
     dispatch(setSelectedPost(post));
@@ -56,12 +59,15 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
     
 
   };
+  
   const onOpenImgModal=(event:any)=>{
     event.stopPropagation();
     dispatch(setSelectedImgPost(post));
     dispatch(setSingleImgModalVisible(true));
 
   }
+
+
 
   return (
     <>
