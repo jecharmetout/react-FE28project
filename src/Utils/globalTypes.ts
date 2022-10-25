@@ -39,3 +39,13 @@ export type ActivateUserPayload = {
   params: ActivationParams;
   callback: (status: RegistrationStatus) => void;
 };
+export type AuthUserPayload = {
+  email: string;
+  password: string;
+};
+
+export type User = {
+  username: string;
+  id: number;
+  email: string;
+};

@@ -1,5 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 //@ts-ignore
 import styles from "./SignIn.module.css";
 import classNames from "classnames";
@@ -8,7 +10,8 @@ import Input from "../../Components/Input";
 import Button, { ButtonType } from "../../Components/Button";
 import Label from "../../Components/Label";
 import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
-import { PathNames } from "../../Pages/Router/Router";
+import { PathNames } from "../../Pages/Router";
+import { authUser } from "../../Redux/reducers/authReducer";
 
 const validateEmail = (email: string) => {
   return String(email)
@@ -19,6 +22,7 @@ const validateEmail = (email: string) => {
 };
 
 const SignIn = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [emailTouched, setEmailTouched] = useState(false);
@@ -59,7 +63,9 @@ const SignIn = () => {
     navigate(PathNames.Home);
   };
 
- 
+  const onSignIn = () => {
+    dispatch(authUser({ email, password }));
+  };
 
   return (
     <div
@@ -68,7 +74,9 @@ const SignIn = () => {
       })}
     >
       <div className={styles.headForm}>
-        <div className={styles.backHomeBtn} onClick={onBackHomeClick}>Back to Home</div>
+        <div className={styles.backHomeBtn} onClick={onBackHomeClick}>
+          Back to Home
+        </div>
         <Title title={"Sign In"} />
       </div>
       <div className={styles.formContainer}>
@@ -107,9 +115,7 @@ const SignIn = () => {
           <Button
             type={ButtonType.Primary}
             title={"Sign In"}
-            onClick={() => {
-              console.log("primary");
-            }}
+            onClick={onSignIn}
             className={styles.signInBtn}
             disabled={false}
           />

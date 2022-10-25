@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 // import { HamburgerMenu } from "react-hamburger-menu";
 //@ts-ignore
 import styles from "./Navbar.module.css";
@@ -21,22 +21,26 @@ import AuthSelectors from "../../Redux/selectors/authSelectors";
 import { useNavigate } from "react-router-dom";
 import { PathNames } from "../../Pages/Router/Router";
 
+
 const Navbar = ({ onClick, isOpened }: any) => {
 
   const { theme, onChangeTheme } = useThemeContext();
 
-  const currentUser = useSelector(AuthSelectors.getCurrentUser)
+  const currentUser = useSelector(AuthSelectors.getCurrentUser);
+
+
+ 
 
   const [value, setValue] = useState<string>("");
 
   const onChange = (inputValue: string) => {
     setValue(inputValue);
   };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const onSignInClick = ()=>{
-    navigate(PathNames.SignIn)
-  }
+  const onSignInClick = () => {
+    navigate(PathNames.SignIn);
+  };
 
   return (
     <div className={classNames(styles.navbarMenu)}>
@@ -66,7 +70,13 @@ const Navbar = ({ onClick, isOpened }: any) => {
           >
             <SearchIcon />
           </div>
-          {currentUser ? <User userName={"Artem Malkin"} /> : <div className={styles.userIcon} onClick={onSignInClick}><UserIcon/></div>}
+          {currentUser ? (
+            <User userName={currentUser?.username || ""} />
+          ) : (
+            <div className={styles.userIcon} onClick={onSignInClick}>
+              <UserIcon />
+            </div>
+          )}
         </div>
       </nav>
       {isOpened && <Menu />}

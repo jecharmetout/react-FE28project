@@ -1,5 +1,9 @@
 import { create } from "apisauce";
-import { ActivationParams, UserActionPayload } from "../../Utils/globalTypes";
+import {
+  ActivationParams,
+  AuthUserPayload,
+  UserActionPayload
+} from "../../Utils/globalTypes";
 
 const API = create({
   baseURL: "https://studapi.teachmeskills.by"
@@ -20,4 +24,36 @@ const activateNewUser = (params: ActivationParams) => {
 const getPost = (id: string) => {
   return API.get(`/blog/posts/${id}/`);
 };
-export default { createNewUser, getPostsList, activateNewUser, getPost };
+
+const authUser = (params: AuthUserPayload) => {
+  return API.post("/auth/jwt/create/", params);
+};
+
+
+const getCurrentUser = (token: string) => {
+  return API.get(
+    "/auth/users/me/",
+    {},
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+};
+
+const verifyToken = (token: string) => {
+  return API.post("/auth/jwt/verify/", { token });
+};
+
+const refreshToken = (refresh: string) => {
+  return API.post("/auth/jwt/refresh/", { refresh });
+};
+
+export default {
+  createNewUser,
+  getPostsList,
+  activateNewUser,
+  getPost,
+  authUser,
+  getCurrentUser,
+  verifyToken,
+  refreshToken,
+  
+};

@@ -11,17 +11,16 @@
     color: #fff;
     font-size: 16px;
     font-weight: 600;
-    display: flex;
-    text-align: center;
-    align-items: center;
+    margin: auto;
   }
   
-  .user p:before {
-    content: "AM";
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .userInitials {
     width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
     height: 48px;
     background-color: rgb(83, 96, 205);
     margin-right: 16px;
