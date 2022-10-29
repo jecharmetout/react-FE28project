@@ -117,7 +117,32 @@ const postsReducer = createSlice({
     },
     setSearchedPosts: (state, action: PayloadAction<CardListType>) => {
       state.searchedPosts = action.payload;
-    }
+    },
+    setSearchedLikeStatus: (
+      state,
+      action: PayloadAction<{ status: LikeStatus; id: number }>
+    ) => {
+      const post = state.searchedPosts.find(c => c.id === action.payload.id);
+      const postIndex = state.searchedPosts.findIndex(
+        c => c.id === action.payload.id
+      );
+      //тут мы просто доп проверяем, нашел ли у нас find в массиве общих постов нужный нам
+      if (post && postIndex !== -1) {
+        //Если уже стоит лайк или дизлайк - убрать его и поставить null
+        if (post.likeStatus === action.payload.status) {
+          state.searchedPosts.splice(postIndex, 1, {
+            ...post,
+            likeStatus: null
+          });
+        } else {
+          //Иначе дать ему актуальный статус
+          state.searchedPosts.splice(postIndex, 1, {
+            ...post,
+            likeStatus: action.payload.status
+          });
+        }
+      }
+    },
   }
 });
 
@@ -135,6 +160,7 @@ export const {
   searchForPosts,
   setSearchPostsLoading,
   setLikeStatus,
+  setSearchedLikeStatus,
   getSinglePost,
   setSinglePost,
   setSinglePostLoading,

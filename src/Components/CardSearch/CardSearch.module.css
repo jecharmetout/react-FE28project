@@ -69,7 +69,11 @@
   display: flex;
   gap: 52px;
 }
-
+.iconsOptions {
+  display: flex;
+  gap: 30px;
+  cursor: pointer;
+}
 .likeStatusButton {
   display: flex;
   gap: 12px;
@@ -79,22 +83,12 @@
 .like svg path {
   fill: #2231aa;
 }
-.darkContainer .like svg path{
-  fill: #aab3f1;
 
-}
 .dislike svg path {
   fill: red;
 }
-.darkContainer .dislike svg path{
-  fill: rgb(255, 46, 46);
 
-}
-.iconsOptions {
-  display: flex;
-  gap: 30px;
-  cursor: pointer;
-}
+
 
 
 .favouritePost svg path {
@@ -106,14 +100,22 @@
 .darkContainer {
   border-bottom: 1px solid #8d8e97;
 }
-
+.darkContainer svg > path {
+  fill: white;
+}
 .darkContainer .date,
 .darkContainer .title {
   color: #ffffff;
 }
-.darkContainer .iconsThumb :first-child {
-  fill: white;
+
+.darkContainer .favouritePost svg path {
+  fill: #a1a100;
 }
-.darkContainer .iconsOptions :first-child {
-  fill: white;
+.darkContainer .dislike svg path{
+  fill: rgb(255, 46, 46);
+
+}
+.darkContainer .like svg path{
+  fill: #aab3f1;
+
 }

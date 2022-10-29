@@ -18,8 +18,7 @@ import {
   setSelectedPost,
   setSelectedImgPost,
   setSingleImgModalVisible,
-  setSinglePostModalVisible,
-
+  setSinglePostModalVisible
 } from "../../Redux/reducers/postsReducer";
 import { CardListType, LikeStatus } from "../../Utils/globalTypes";
 import PostsSelectors from "../../Redux/selectors/postsSelectors";
@@ -30,7 +29,6 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
   const { theme } = useThemeContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
 
   const favouritePostsList: CardListType = useSelector(
     PostsSelectors.getFavoritePosts
@@ -38,7 +36,6 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
 
   const currentPostIndex = favouritePostsList.findIndex(post => post.id === id);
   const isFavorite = currentPostIndex !== -1;
-
 
   const onNavigateToPost = () => {
     navigate(`/posts/${id}`);
@@ -56,18 +53,13 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
     event.stopPropagation();
     dispatch(setSelectedPost(post));
     dispatch(setSinglePostModalVisible(true));
-    
-
   };
-  
-  const onOpenImgModal=(event:any)=>{
+
+  const onOpenImgModal = (event: any) => {
     event.stopPropagation();
     dispatch(setSelectedImgPost(post));
     dispatch(setSingleImgModalVisible(true));
-
-  }
-
-
+  };
 
   return (
     <>
@@ -130,4 +122,3 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
   );
 };
 export default CardPost;
-
