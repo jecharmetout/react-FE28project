@@ -38,6 +38,6 @@ const PostContent = () => {
     </div>
   
   
-  ); //ВМЕСТО null - анимашка, иначе - пост
+  ); 
 };
 export default PostContent;
