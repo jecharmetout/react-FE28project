@@ -29,12 +29,12 @@ const PostContent = () => {
   return !isLoading && post ? (
     <Post post={post} />
   ) : (
-    <div className={styles.lottie__container}>
+    <div className={styles.lottieContainer}>
       <Lottie
-        className={styles.lottie__container__animation}
+        className={styles.lottieContainerAnimation}
         animationData={processingAnimation}
         loop={true}
-      ></Lottie>
+      />
     </div>
   
   

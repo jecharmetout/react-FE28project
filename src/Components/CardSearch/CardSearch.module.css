@@ -64,14 +64,41 @@
   align-items: center;
   margin-bottom: 40px;
 }
-.iconsThumb :first-child {
-  margin-right: 52px;
+.iconsThumb {
+  cursor: pointer;
+  display: flex;
+  gap: 52px;
+}
+
+.likeStatusButton {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-width: 42px;
+}
+.like svg path {
+  fill: #2231aa;
+}
+.darkContainer .like svg path{
+  fill: #aab3f1;
+
+}
+.dislike svg path {
+  fill: red;
+}
+.darkContainer .dislike svg path{
+  fill: rgb(255, 46, 46);
+
+}
+.iconsOptions {
+  display: flex;
+  gap: 30px;
   cursor: pointer;
 }
-.iconsOptions :first-child {
-  margin-right: 25px;
-  cursor: pointer;
 
+
+.favouritePost svg path {
+  fill: #a1a100;
 }
 
 /* DarkTheme */

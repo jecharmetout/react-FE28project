@@ -6,7 +6,7 @@
   width: 100%;
   margin-bottom: 72px;
 }
-nav {
+.nav {
   width: 100%;
   background-color: rgb(34, 49, 170);
   position: relative;
@@ -23,7 +23,11 @@ nav {
   background: rgb(83, 96, 205);
   color: #ffffff;
 }
-
+.inputContainer {
+  flex: 1;
+  display: flex;
+  margin: 0 15px;
+}
 /* Icons */
 .searchIcon {
   display: flex;
@@ -31,7 +35,6 @@ nav {
   align-items: center;
   width: 84px;
   height: 84px;
-  border-right: 1px solid rgb(83, 96, 205);
   border-left: 1px solid rgb(83, 96, 205);
 }
 .searchIcon:hover  {
@@ -65,6 +68,8 @@ nav {
   width: 84px;
   height: 84px;
   border-left: 1px solid rgb(83, 96, 205);
+  border-right: 1px solid rgb(83, 96, 205);
+
 
 }
 .sunMoonIcon:hover  {

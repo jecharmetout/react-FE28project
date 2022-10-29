@@ -12,7 +12,7 @@ import styles from "./Menu.module.css";
 
 import User from "../../User/User";
 import { Theme, useThemeContext } from "../../../Context/ThemeContext/Context";
-import { PathNames } from "../../../Pages/Router/Router";
+import { PathNames } from "../../../Pages/Router";
 import { logoutUser } from "../../../Redux/reducers/authReducer";
 import AuthSelectors from "../../../Redux/selectors/authSelectors";
 
@@ -34,11 +34,6 @@ const Menu = () => {
       key: "Home",
       title: "Home",
       path: PathNames.Home
-    },
-    {
-      key: "Search",
-      title: "Search",
-      path: PathNames.Search
     },
     {
       key: "Add post",

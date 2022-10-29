@@ -1,10 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  CardListType,
-  CardPostType,
-  LikeStatus,
-  TabsNames
-} from "../../Utils/globalTypes";
+import { CardListType, CardPostType, LikeStatus, TabsNames } from "../../Utils";
 
 type PostStateType = {
   selectedPost: CardPostType | null;
@@ -16,7 +11,10 @@ type PostStateType = {
   favouritePostsList: CardListType;
   singlePost: CardPostType | null;
   isPostLoading: boolean;
-
+  isSearchPostsLoading: boolean;
+  isBlogLoading: boolean;
+  searchedPosts: CardListType;
+  searchString: string;
 };
 
 const INITIAL_STATE: PostStateType = {
@@ -29,6 +27,10 @@ const INITIAL_STATE: PostStateType = {
   favouritePostsList: [],
   singlePost: null,
   isPostLoading: false,
+  isSearchPostsLoading: false,
+  isBlogLoading: false,
+  searchedPosts: [],
+  searchString: ""
 };
 
 const postsReducer = createSlice({
@@ -79,6 +81,15 @@ const postsReducer = createSlice({
         state.favouritePostsList.splice(postIndex, 1);
       }
     },
+    searchForPosts: (state, action: PayloadAction<string>) => {
+      // !! state.searchString = action.payload; для по буквенного поиска
+    },
+    setSearchPostsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isSearchPostsLoading = action.payload;
+    },
+    setBlogLoading: (state, action: PayloadAction<boolean>) => {
+      state.isBlogLoading = action.payload;
+    },
     setLikeStatus: (
       state,
       action: PayloadAction<{ status: LikeStatus; id: number }>
@@ -103,6 +114,9 @@ const postsReducer = createSlice({
           });
         }
       }
+    },
+    setSearchedPosts: (state, action: PayloadAction<CardListType>) => {
+      state.searchedPosts = action.payload;
     }
   }
 });
@@ -118,9 +132,12 @@ export const {
   setActiveTab,
   setCardsList,
   setFavouritePost,
+  searchForPosts,
+  setSearchPostsLoading,
   setLikeStatus,
   getSinglePost,
   setSinglePost,
   setSinglePostLoading,
-  
+  setBlogLoading,
+  setSearchedPosts
 } = postsReducer.actions;
