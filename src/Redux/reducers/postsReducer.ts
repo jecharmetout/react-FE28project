@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CardListType, CardPostType, LikeStatus, TabsNames } from "../../Utils";
+import { CardListType, CardPostType, GetPostsPayload, LikeStatus, TabsNames } from "../../Utils";
 
 type PostStateType = {
   selectedPost: CardPostType | null;
@@ -15,6 +15,7 @@ type PostStateType = {
   isBlogLoading: boolean;
   searchedPosts: CardListType;
   searchString: string;
+  cardsCount: number;
 };
 
 const INITIAL_STATE: PostStateType = {
@@ -30,14 +31,15 @@ const INITIAL_STATE: PostStateType = {
   isSearchPostsLoading: false,
   isBlogLoading: false,
   searchedPosts: [],
-  searchString: ""
+  searchString: "",
+  cardsCount: 0,
 };
 
 const postsReducer = createSlice({
   name: "posts",
   initialState: INITIAL_STATE,
   reducers: {
-    getPosts: (state, action: PayloadAction<undefined>) => {},
+    getPosts: (state, action: PayloadAction<GetPostsPayload>) => {},
     getSinglePost: (state, action: PayloadAction<string>) => {},
     setSinglePost: (state, action: PayloadAction<CardPostType>) => {
       state.singlePost = action.payload;
@@ -143,6 +145,9 @@ const postsReducer = createSlice({
         }
       }
     },
+    setCardsCount: (state, action: PayloadAction<number>) => {
+      state.cardsCount = action.payload;
+    },
   }
 });
 
@@ -165,5 +170,6 @@ export const {
   setSinglePost,
   setSinglePostLoading,
   setBlogLoading,
-  setSearchedPosts
+  setSearchedPosts,
+  setCardsCount,
 } = postsReducer.actions;

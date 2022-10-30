@@ -4,6 +4,7 @@ import {
   getSinglePost,
   searchForPosts,
   setBlogLoading,
+  setCardsCount,
   setCardsList,
   setSearchedPosts,
   setSearchPostsLoading,
@@ -12,17 +13,21 @@ import {
 } from "../reducers/postsReducer";
 import Api from "../api";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { GetPostsPayload } from "../../Utils";
 
-function* getPostsWorker() {
-  yield put(setBlogLoading(true));
 
-  const { data, status, problem } = yield call(Api.getPostsList);
+function* getPostsWorker(action: PayloadAction<GetPostsPayload>) {
+  // yield put(setBlogLoading(true));
+
+  const { offset } = action.payload;
+  const { data, status, problem } = yield call(Api.getPostsList, offset);
   if (status === 200 && data) {
+    yield put(setCardsCount(data.count));
     yield put(setCardsList(data.results));
   } else {
     console.log(problem);
   }
-  yield put(setBlogLoading(false));
+  // yield put(setBlogLoading(false));
 
 }
 function* getSinglePostWorker(action: PayloadAction<string>) {

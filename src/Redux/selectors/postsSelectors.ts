@@ -13,5 +13,6 @@ export default {
   getBlogLoading: (state: any) =>
     state.postsReducer.isBlogLoading,
   getSearchedPosts: (state: any) => state.postsReducer.searchedPosts,
-  getSearchString: (state: any) => state.postsReducer.searchString
+  getSearchString: (state: any) => state.postsReducer.searchString,
+  getCardsCount: (state: any) => state.postsReducer.cardsCount,
 };
