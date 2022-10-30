@@ -11,6 +11,8 @@ import styles from "./Search.module.css";
 import PostsSelectors from "../../Redux/selectors/postsSelectors";
 import processingAnimation from "../../lotties/processing.json";
 import { PathNames } from "../Router";
+import SinglePostModal from "../Blog/Components/SinglePostModal";
+import SingleImgModal from "../Blog/Components/SingleImgModal";
 
 type LocationState = {
   searchElement: string;
@@ -32,7 +34,7 @@ const Search = () => {
 
   // const searchString = useSelector(
   //   PostsSelectors.getSearchString
-  // ); 
+  // );
   // !! для поиска по буквенно
 
   useEffect(() => {
@@ -44,14 +46,18 @@ const Search = () => {
   return (
     <div
       className={classNames(styles.searchPageWrapper, {
-        [styles.darkContainer]: theme === Theme.Dark,
+        [styles.darkContainer]: theme === Theme.Dark
       })}
     >
       <div className={styles.searchListTitle}>
         Search results " {searchElement} "
       </div>
       {!isSearchPostsLoading ? (
-        <SearchList searchedPosts={searchedPosts} />
+        <div>
+          <SearchList searchedPosts={searchedPosts} />
+          <SinglePostModal />
+          <SingleImgModal />
+        </div>
       ) : (
         <div className={styles.lottieContainer}>
           <Lottie

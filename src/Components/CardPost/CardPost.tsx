@@ -70,9 +70,9 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
           [styles.smallPost]: size === CardSize.Small,
           [styles.darkContainer]: theme === Theme.Dark
         })}
-        onClick={onNavigateToPost}
+        
       >
-        <div className={styles.textImgWrap}>
+        <div className={styles.textImgWrap} onClick={onNavigateToPost}>
           <div className={styles.contentWrapper}>
             <div className={styles.titleWrapper}>
               <div className={styles.date}>{date}</div>

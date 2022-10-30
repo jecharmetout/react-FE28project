@@ -29,7 +29,8 @@ function* getSinglePostWorker(action: PayloadAction<string>) {
   yield put(setSinglePostLoading(true));
   const { data, status, problem } = yield call(Api.getPost, action.payload);
   if (status === 200 && data) {
-    yield put(setSearchedPosts(data.results));
+    yield put(setSinglePost(data));
+
   } else {
     console.log(problem);
   }

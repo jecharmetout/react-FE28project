@@ -1,5 +1,6 @@
 import React, { FC} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
 //@ts-ignore
@@ -17,7 +18,9 @@ import { CardListType, LikeStatus } from "../../Utils";
 import {
   setFavouritePost,
   setSearchedLikeStatus,
+  setSelectedImgPost,
   setSelectedPost,
+  setSingleImgModalVisible,
   setSinglePostModalVisible
 } from "../../Redux/reducers/postsReducer";
 
@@ -25,6 +28,8 @@ const CardSearch: FC<CardSearchProps> = ({ post }) => {
   const { image, title, date, id, likeStatus } = post;
   const { theme } = useThemeContext();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const favouritePostsList: CardListType = useSelector(
     postsSelectors.getFavoritePosts
@@ -32,6 +37,9 @@ const CardSearch: FC<CardSearchProps> = ({ post }) => {
   const currentPostIndex = favouritePostsList.findIndex(post => post.id === id);
   const isFavorite = currentPostIndex !== -1;
 
+  const onNavigateToPost = () => {
+    navigate(`/posts/${id}`);
+  };
   const onAddFavourite = (event: any) => {
     event.stopPropagation();
     dispatch(setFavouritePost(post));
@@ -40,15 +48,24 @@ const CardSearch: FC<CardSearchProps> = ({ post }) => {
   const onStatusClick = (status: LikeStatus) => {
     dispatch(setSearchedLikeStatus({ status, id }));
   };
-
+  const onOpenPostModal = (event: any) => {
+    event.stopPropagation();
+    dispatch(setSelectedPost(post));
+    dispatch(setSinglePostModalVisible(true));
+  };
+  const onOpenImgModal = (event: any) => {
+    event.stopPropagation();
+    dispatch(setSelectedImgPost(post));
+    dispatch(setSingleImgModalVisible(true));
+  };
   return (
     <div
       className={classNames(styles.cardWrapper, {
         [styles.darkContainer]: theme === Theme.Dark
       })}
     >
-      <div className={classNames(styles.contentWrapper)}>
-        <div className={classNames(styles.imgWrapper)}>
+      <div className={classNames(styles.contentWrapper)} onClick={onNavigateToPost}>
+        <div className={classNames(styles.imgWrapper)} onClick={onOpenImgModal}>
           <img src={image} alt="img" />
         </div>
         <div className={styles.titleWrapper}>
@@ -82,7 +99,7 @@ const CardSearch: FC<CardSearchProps> = ({ post }) => {
           >
             <BookMarksIcon />
           </div>
-          <div>
+          <div onClick={onOpenPostModal}>
             <Ellipsis />
           </div>
         </div>
