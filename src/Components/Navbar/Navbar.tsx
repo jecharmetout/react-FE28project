@@ -44,9 +44,11 @@ const Navbar = ({ onClick, isOpened }: any) => {
   const onSignInClick = () => {
     navigate(PathNames.SignIn);
   };
+
+
   const onSearch = () => {
     if (value.length > 0) {
-      dispatch(searchForPosts(value));
+      dispatch(searchForPosts({ search: value, offset: 0, isOverwrite: true }));
       navigate(PathNames.Search, { state: { searchElement: value } });
       setValue("");
       onClick();

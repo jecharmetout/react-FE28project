@@ -15,4 +15,5 @@ export default {
   getSearchedPosts: (state: any) => state.postsReducer.searchedPosts,
   getSearchString: (state: any) => state.postsReducer.searchString,
   getCardsCount: (state: any) => state.postsReducer.cardsCount,
+  getSearchedPostsCount: (state: any) => state.postsReducer.searchedPostsCount,
 };

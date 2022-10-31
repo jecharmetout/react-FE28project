@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CardListType, CardPostType, GetPostsPayload, LikeStatus, TabsNames } from "../../Utils";
+import { CardListType, CardPostType, GetPostsPayload, LikeStatus, SearchPostsPayload, SetSearchedPostsPayload, TabsNames } from "../../Utils";
 
 type PostStateType = {
   selectedPost: CardPostType | null;
@@ -16,6 +16,7 @@ type PostStateType = {
   searchedPosts: CardListType;
   searchString: string;
   cardsCount: number;
+  searchedPostsCount: number;
 };
 
 const INITIAL_STATE: PostStateType = {
@@ -33,6 +34,7 @@ const INITIAL_STATE: PostStateType = {
   searchedPosts: [],
   searchString: "",
   cardsCount: 0,
+  searchedPostsCount: 0,
 };
 
 const postsReducer = createSlice({
@@ -83,12 +85,6 @@ const postsReducer = createSlice({
         state.favouritePostsList.splice(postIndex, 1);
       }
     },
-    searchForPosts: (state, action: PayloadAction<string>) => {
-      // !! state.searchString = action.payload; для по буквенного поиска
-    },
-    setSearchPostsLoading: (state, action: PayloadAction<boolean>) => {
-      state.isSearchPostsLoading = action.payload;
-    },
     setBlogLoading: (state, action: PayloadAction<boolean>) => {
       state.isBlogLoading = action.payload;
     },
@@ -117,8 +113,16 @@ const postsReducer = createSlice({
         }
       }
     },
-    setSearchedPosts: (state, action: PayloadAction<CardListType>) => {
-      state.searchedPosts = action.payload;
+    setSearchPostsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isSearchPostsLoading = action.payload;
+    },
+    setSearchedPosts: (state, action: PayloadAction<SetSearchedPostsPayload>) => {
+      const { isOverwrite, data } = action.payload;
+      if (isOverwrite) {
+        state.searchedPosts = data;
+      } else {
+        state.searchedPosts.push(...data);
+      }
     },
     setSearchedLikeStatus: (
       state,
@@ -148,6 +152,12 @@ const postsReducer = createSlice({
     setCardsCount: (state, action: PayloadAction<number>) => {
       state.cardsCount = action.payload;
     },
+    setSearchedPostsCount: (state, action: PayloadAction<number>) => {
+      state.searchedPostsCount = action.payload;
+    },
+    searchForPosts: (state, action: PayloadAction<SearchPostsPayload>) => {
+      // !! state.searchString = action.payload; для по буквенного поиска
+    },
   }
 });
 
@@ -172,4 +182,5 @@ export const {
   setBlogLoading,
   setSearchedPosts,
   setCardsCount,
+  setSearchedPostsCount,
 } = postsReducer.actions;

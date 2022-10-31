@@ -7,13 +7,14 @@ import {
   setCardsCount,
   setCardsList,
   setSearchedPosts,
+  setSearchedPostsCount,
   setSearchPostsLoading,
   setSinglePost,
   setSinglePostLoading
 } from "../reducers/postsReducer";
 import Api from "../api";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { GetPostsPayload } from "../../Utils";
+import { GetPostsPayload, SearchPostsPayload } from "../../Utils";
 
 
 function* getPostsWorker(action: PayloadAction<GetPostsPayload>) {
@@ -43,19 +44,25 @@ function* getSinglePostWorker(action: PayloadAction<string>) {
 }
 
 
-function* getSearchedPostsWorker(action: PayloadAction<string>) {
-  yield put(setSearchPostsLoading(true));
+function* getSearchedPostsWorker(action: PayloadAction<SearchPostsPayload>) {
+  const { offset, isOverwrite, search } = action.payload;
+
+  yield put(setSearchPostsLoading(isOverwrite));
   const { data, status, problem } = yield call(
     Api.getSearchedPosts,
-    action.payload
+    search,
+    offset
   );
   if (status === 200 && data) {
-    yield put(setSearchedPosts(data.results));
+    yield put(setSearchedPostsCount(data.count));
+    yield put(setSearchedPosts({ data: data.results, isOverwrite }));
   } else {
     console.log("Error getting search posts", problem);
   }
   yield put(setSearchPostsLoading(false));
 }
+
+
 
 export default function* postsSagaWatcher() {
   yield all([
@@ -64,3 +71,5 @@ export default function* postsSagaWatcher() {
     takeLatest(getSinglePost, getSinglePostWorker),
   ]);
 }
+
+
