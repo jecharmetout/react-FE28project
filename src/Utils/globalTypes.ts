@@ -1,7 +1,8 @@
 export enum TabsNames {
   All = "all",
   Favorites = "favorites",
-  Popular = "popular"
+  Popular = "popular",
+  MyPosts = "myPosts",
 }
 export enum LikeStatus {
   Like = "like",

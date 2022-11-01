@@ -45,16 +45,6 @@ const Router = () => {
               )
             }
           />
-          {/* <Route
-            path={PathNames.MyPosts}
-            element={
-              !isAuthenticated ? (
-                <Blog isMyPosts />
-              ) : (
-                <Navigate to={PathNames.Home} replace />
-              )
-            }
-          /> */}
           <Route path={PathNames.SignUp} element={<SignUp />} />
           <Route path={PathNames.Search} element={<Search />} />
           <Route path={PathNames.NewPost} element={<PostContent />} />

@@ -158,6 +158,8 @@ const postsReducer = createSlice({
     searchForPosts: (state, action: PayloadAction<SearchPostsPayload>) => {
       // !! state.searchString = action.payload; для по буквенного поиска
     },
+    getMyPostsList: (state, action: PayloadAction<undefined>) => {},
+    
   }
 });
 
@@ -183,4 +185,5 @@ export const {
   setSearchedPosts,
   setCardsCount,
   setSearchedPostsCount,
+  getMyPostsList,
 } = postsReducer.actions;
