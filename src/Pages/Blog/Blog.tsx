@@ -4,11 +4,15 @@ import Lottie from "lottie-react";
 import ReactPaginate from "react-paginate";
 import classNames from "classnames";
 
-
 import CardList from "../../Components/CardList";
 import Title from "../../Components/Title";
 import Tabs from "../../Components/Tabs";
-import { DEFAULT_PAGE_NUMBER, PER_PAGE, TabsNames } from "../../Utils";
+import {
+  DEFAULT_PAGE_NUMBER,
+  PER_PAGE,
+  SortOrder,
+  TabsNames
+} from "../../Utils";
 import {
   getPosts,
   setActiveTab,
@@ -25,9 +29,6 @@ import { Theme, useThemeContext } from "../../Context/ThemeContext/Context";
 import AuthSelectors from "../../Redux/selectors/authSelectors";
 import EmptyState from "../../Components/EmptyState";
 
-
-
-
 const Blog = () => {
   const { theme } = useThemeContext();
 
@@ -43,28 +44,29 @@ const Blog = () => {
       {
         key: TabsNames.All,
         title: "All",
-        disabled: false,
+        disabled: false
       },
       {
         key: TabsNames.MyPosts,
         title: "My Posts",
-        disabled: !isAuthenticated,
+        disabled: !isAuthenticated
       },
       {
         key: TabsNames.Favorites,
         title: "My favorites",
-        disabled: !isAuthenticated,
+        disabled: !isAuthenticated
       },
       {
         key: TabsNames.Popular,
         title: "Popular",
-        disabled: !isAuthenticated,
-      },
+        disabled: !isAuthenticated
+      }
     ],
     [isAuthenticated]
   );
 
   const [page, setPage] = useState(DEFAULT_PAGE_NUMBER);
+  const [order, setOrder] = useState(SortOrder.Title);
 
   const cardsCount = useSelector(PostsSelectors.getCardsCount);
   const pagesCount = Math.ceil(cardsCount / PER_PAGE);
@@ -82,8 +84,10 @@ const Blog = () => {
   // }, [page]);
   useEffect(() => {
     const offset = (page - 1) * PER_PAGE;
-    dispatch(isMyPosts ? getMyPostsList() : getPosts({ offset }));
-  }, [page, isMyPosts]);
+    dispatch(
+      isMyPosts ? getMyPostsList() : getPosts({ offset, ordering: order })
+    );
+  }, [page, isMyPosts, order]);
 
   const onPageChange = ({ selected }: { selected: number }) => {
     setPage(selected + 1);
@@ -98,29 +102,45 @@ const Blog = () => {
           })}
         >
           <Title title={"Blog"} />
-          <Tabs tabs={tabs} onClick={onTabClick} activeTab={activeTab} />
+          <div className={styles.tabsSelectWrapper}>
+            <Tabs tabs={tabs} onClick={onTabClick} activeTab={activeTab} />
+            {!isMyPosts && (
+              <select
+                value={order}
+                onChange={(event: any) => setOrder(event.target.value)}
+              >
+                <option value={SortOrder.Title}>Title</option>
+                <option value={SortOrder.Date}>Date</option>
+              </select>
+            )}
+          </div>
+
           <CardList cardList={cardsList} />
-          {!isMyPosts ? (
-        <ReactPaginate
-          pageCount={pagesCount}
-          onPageChange={onPageChange}
-          containerClassName={styles.pagesContainer}
-          pageClassName={styles.pageNumber}
-          breakClassName={styles.pageNumber}
-          breakLinkClassName={styles.linkPage}
-          activeLinkClassName={styles.linkPage}
-          pageLinkClassName={styles.linkPage}
-          activeClassName={styles.activePageNumber}
-          nextClassName={classNames(styles.pageNumber, styles.arrowButton, {
-            [styles.availableToClickButton]: page !== pagesCount,
-          })}
-          previousClassName={classNames(styles.pageNumber, styles.arrowButton, {
-            [styles.availableToClickButton]: page !== 1,
-          })}
-          previousLinkClassName={styles.linkPage}
-          nextLinkClassName={styles.linkPage}
-        />
-      ): <EmptyState/>}
+          {!isMyPosts && (
+            <ReactPaginate
+              pageCount={pagesCount}
+              onPageChange={onPageChange}
+              containerClassName={styles.pagesContainer}
+              pageClassName={styles.pageNumber}
+              breakClassName={styles.pageNumber}
+              breakLinkClassName={styles.linkPage}
+              activeLinkClassName={styles.linkPage}
+              pageLinkClassName={styles.linkPage}
+              activeClassName={styles.activePageNumber}
+              nextClassName={classNames(styles.pageNumber, styles.arrowButton, {
+                [styles.availableToClickButton]: page !== pagesCount
+              })}
+              previousClassName={classNames(
+                styles.pageNumber,
+                styles.arrowButton,
+                {
+                  [styles.availableToClickButton]: page !== 1
+                }
+              )}
+              previousLinkClassName={styles.linkPage}
+              nextLinkClassName={styles.linkPage}
+            />
+          )}
           <SinglePostModal />
           <SingleImgModal />
         </div>

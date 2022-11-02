@@ -45,7 +45,8 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
     dispatch(setFavouritePost(post));
   };
 
-  const onStatusClick = (status: LikeStatus) => {
+  const onStatusClick = (status: LikeStatus, event:any) => {
+    event.stopPropagation();
     dispatch(setLikeStatus({ status, id }));
   };
 
@@ -70,9 +71,9 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
           [styles.smallPost]: size === CardSize.Small,
           [styles.darkContainer]: theme === Theme.Dark
         })}
-        
+        onClick={onNavigateToPost}
       >
-        <div className={styles.textImgWrap} onClick={onNavigateToPost}>
+        <div className={styles.textImgWrap}>
           <div className={styles.contentWrapper}>
             <div className={styles.titleWrapper}>
               <div className={styles.date}>{date}</div>
@@ -89,7 +90,7 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
         <div className={styles.iconsWrapper}>
           <div className={styles.iconsThumb}>
             <div
-              onClick={() => onStatusClick(LikeStatus.Like)}
+              onClick={(event) => onStatusClick(LikeStatus.Like, event)}
               className={classNames(styles.likeStatusButton, {
                 [styles.like]: likeStatus === LikeStatus.Like
               })}
@@ -97,7 +98,7 @@ const CardPost: FC<CardPostProps> = ({ post, size }) => {
               <ThumbUpIcon /> {likeStatus === LikeStatus.Like && 1}
             </div>
             <div
-              onClick={() => onStatusClick(LikeStatus.Dislike)}
+              onClick={(event) => onStatusClick(LikeStatus.Dislike, event)}
               className={classNames(styles.likeStatusButton, {
                 [styles.dislike]: likeStatus === LikeStatus.Dislike
               })}

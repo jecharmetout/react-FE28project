@@ -6,6 +6,8 @@
   flex-direction: column;
   border-bottom: 1px solid #dadada;
   margin-bottom: 40px;
+  cursor: pointer;
+
 }
 .cardWrapper:last-child {
   margin-bottom: 0px;
@@ -32,7 +34,6 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 45px;
-  cursor: pointer;
 }
 
 .titleWrapper {

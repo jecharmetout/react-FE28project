@@ -45,7 +45,8 @@ const CardSearch: FC<CardSearchProps> = ({ post }) => {
     dispatch(setFavouritePost(post));
   };
 
-  const onStatusClick = (status: LikeStatus) => {
+  const onStatusClick = (status: LikeStatus, event:any) => {
+    event.stopPropagation();
     dispatch(setSearchedLikeStatus({ status, id }));
   };
   const onOpenPostModal = (event: any) => {
@@ -63,8 +64,9 @@ const CardSearch: FC<CardSearchProps> = ({ post }) => {
       className={classNames(styles.cardWrapper, {
         [styles.darkContainer]: theme === Theme.Dark
       })}
+      onClick={onNavigateToPost}
     >
-      <div className={classNames(styles.contentWrapper)} onClick={onNavigateToPost}>
+      <div className={classNames(styles.contentWrapper)}>
         <div className={classNames(styles.imgWrapper)} onClick={onOpenImgModal}>
           <img src={image} alt="img" />
         </div>
@@ -76,7 +78,7 @@ const CardSearch: FC<CardSearchProps> = ({ post }) => {
       <div className={styles.iconsWrapper}>
         <div className={styles.iconsThumb}>
           <div
-            onClick={() => onStatusClick(LikeStatus.Like)}
+            onClick={(event) => onStatusClick(LikeStatus.Like, event)}
             className={classNames(styles.likeStatusButton, {
               [styles.like]: likeStatus === LikeStatus.Like
             })}
@@ -84,7 +86,7 @@ const CardSearch: FC<CardSearchProps> = ({ post }) => {
             <ThumbUpIcon /> {likeStatus === LikeStatus.Like && 1}
           </div>
           <div
-            onClick={() => onStatusClick(LikeStatus.Dislike)}
+            onClick={(event) => onStatusClick(LikeStatus.Dislike, event)}
             className={classNames(styles.likeStatusButton, {
               [styles.dislike]: likeStatus === LikeStatus.Dislike
             })}
