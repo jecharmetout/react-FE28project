@@ -1,5 +1,4 @@
-import { allowedNodeEnvironmentFlags } from "process";
-import React, { useState, FC, MouseEvent } from "react";
+import React, { FC } from "react";
 //@ts-ignore
 import styles from "./Tabs.module.css";
 import classNames from "classnames";

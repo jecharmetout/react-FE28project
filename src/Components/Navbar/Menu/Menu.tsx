@@ -38,7 +38,7 @@ const Menu = () => {
     {
       key: "Add post",
       title: "Add post",
-      path: PathNames.PostContent
+      path: PathNames.NewPost
     }
   ];
 

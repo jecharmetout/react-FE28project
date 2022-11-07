@@ -19,7 +19,6 @@ import {
   getMyPostsList,
   setCardsList
 } from "../../Redux/reducers/postsReducer";
-//@ts-ignore
 import styles from "./Blog.module.css";
 import PostsSelectors from "../../Redux/selectors/postsSelectors";
 import SinglePostModal from "./Components/SinglePostModal";
@@ -27,7 +26,6 @@ import SingleImgModal from "./Components/SingleImgModal";
 import processingAnimation from "../../lotties/processing.json";
 import { Theme, useThemeContext } from "../../Context/ThemeContext/Context";
 import AuthSelectors from "../../Redux/selectors/authSelectors";
-import EmptyState from "../../Components/EmptyState";
 
 const Blog = () => {
   const { theme } = useThemeContext();

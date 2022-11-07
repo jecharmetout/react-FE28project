@@ -1,18 +1,8 @@
 import React, { FC, ChangeEvent } from "react";
 import classNames from "classnames";
 
-//@ts-ignore
 import styles from "./Input.module.css";
-
-type InputProps = {
-  value: string;
-  onChange: (value: string) => void;
-  onBlur?: () => void;
-  placeholder?: string;
-  className?: string;
-  disabled?: boolean;
-  error?: boolean;
-};
+import { InputProps } from "./types";
 
 const Input: FC<InputProps> = ({
   value,
@@ -22,14 +12,27 @@ const Input: FC<InputProps> = ({
   error,
   className,
   onBlur,
+  type = "text"
 }) => {
   const onInputChange = (evt: ChangeEvent<HTMLInputElement>) => {
     onChange(evt.target.value);
   };
-  return (
+  const onTextAreaChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(evt.target.value);
+  };
+  return type !== "textarea" ? (
     <input
-      type="text"
+      type={type}
       onChange={onInputChange}
+      value={value}
+      onBlur={onBlur}
+      placeholder={placeholder}
+      className={classNames(styles.input, className, { [styles.error]: error })}
+      disabled={disabled}
+    />
+  ) : (
+    <textarea
+      onChange={onTextAreaChange}
       value={value}
       onBlur={onBlur}
       placeholder={placeholder}
