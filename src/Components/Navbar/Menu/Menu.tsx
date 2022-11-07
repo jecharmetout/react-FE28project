@@ -4,10 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 import { NavLink } from "react-router-dom";
 
-
-
-
-//@ts-ignore
 import styles from "./Menu.module.css";
 
 import User from "../../User/User";
@@ -20,7 +16,6 @@ const Menu = () => {
   const { theme } = useThemeContext();
   const location = useLocation();
   const dispatch = useDispatch();
-
 
   const isAuthenticated = useSelector(AuthSelectors.getAuthStatus);
   const currentUser = useSelector(AuthSelectors.getCurrentUser);
@@ -69,7 +64,7 @@ const Menu = () => {
         );
       })}
       {isAuthenticated && (
-        <li className={styles.logOut}> 
+        <li className={styles.logOut}>
           <div
             className={classNames({
               [styles.activeLink]: location.pathname === PathNames.Search
