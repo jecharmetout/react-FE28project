@@ -67,4 +67,5 @@ export type SetSearchedPostsPayload = {
 export enum SortOrder {
   Date = "date",
   Title = "title",
+  Initial = "",
 }

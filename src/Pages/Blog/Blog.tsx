@@ -64,7 +64,7 @@ const Blog = () => {
   );
 
   const [page, setPage] = useState(DEFAULT_PAGE_NUMBER);
-  const [order, setOrder] = useState(SortOrder.Title);
+  const [order, setOrder] = useState(SortOrder.Initial);
 
   const cardsCount = useSelector(PostsSelectors.getCardsCount);
   const pagesCount = Math.ceil(cardsCount / PER_PAGE);
@@ -107,6 +107,7 @@ const Blog = () => {
                 value={order}
                 onChange={(event: any) => setOrder(event.target.value)}
               >
+                <option value={SortOrder.Initial}>Initial</option>
                 <option value={SortOrder.Title}>Title</option>
                 <option value={SortOrder.Date}>Date</option>
               </select>
@@ -114,31 +115,7 @@ const Blog = () => {
           </div>
 
           <CardList cardList={cardsList} />
-          {!isMyPosts && (
-            <ReactPaginate
-              pageCount={pagesCount}
-              onPageChange={onPageChange}
-              containerClassName={styles.pagesContainer}
-              pageClassName={styles.pageNumber}
-              breakClassName={styles.pageNumber}
-              breakLinkClassName={styles.linkPage}
-              activeLinkClassName={styles.linkPage}
-              pageLinkClassName={styles.linkPage}
-              activeClassName={styles.activePageNumber}
-              nextClassName={classNames(styles.pageNumber, styles.arrowButton, {
-                [styles.availableToClickButton]: page !== pagesCount
-              })}
-              previousClassName={classNames(
-                styles.pageNumber,
-                styles.arrowButton,
-                {
-                  [styles.availableToClickButton]: page !== 1
-                }
-              )}
-              previousLinkClassName={styles.linkPage}
-              nextLinkClassName={styles.linkPage}
-            />
-          )}
+
           <SinglePostModal />
           <SingleImgModal />
         </div>
@@ -150,6 +127,27 @@ const Blog = () => {
             loop={true}
           />
         </div>
+      )}
+      {!isMyPosts && (
+        <ReactPaginate
+          pageCount={pagesCount}
+          onPageChange={onPageChange}
+          containerClassName={styles.pagesContainer}
+          pageClassName={styles.pageNumber}
+          breakClassName={styles.pageNumber}
+          breakLinkClassName={styles.linkPage}
+          activeLinkClassName={styles.linkPage}
+          pageLinkClassName={styles.linkPage}
+          activeClassName={styles.activePageNumber}
+          nextClassName={classNames(styles.pageNumber, styles.arrowButton, {
+            [styles.availableToClickButton]: page !== pagesCount
+          })}
+          previousClassName={classNames(styles.pageNumber, styles.arrowButton, {
+            [styles.availableToClickButton]: page !== 1
+          })}
+          previousLinkClassName={styles.linkPage}
+          nextLinkClassName={styles.linkPage}
+        />
       )}
     </div>
   );

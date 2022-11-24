@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 // import { useParams } from "react-router-dom";
 
-//@ts-ignore
 import styles from "./Post.module.css";
 import classNames from "classnames";
 import { PostProps } from "./types";

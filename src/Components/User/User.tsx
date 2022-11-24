@@ -1,8 +1,8 @@
-import React from "react";
-//@ts-ignore
+import React, {FC} from "react";
+import { UserType } from "./types";
 import styles from "./User.module.css";
 
-const User = ({ userName }: any) => {
+const User : FC<UserType>= ({ userName }) => {
   return (
     <div className={styles.user}>
       <div className={styles.userInitials}>{userName[0]}</div>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 
-// @ts-ignore
 import styles from "./App.module.css";
 import classNames from "classnames";
 

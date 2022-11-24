@@ -12,7 +12,7 @@ const Tabs: FC<TabsProps> = ({ tabs, onClick, activeTab }) => {
   return (
     <div
       className={classNames(styles.wrapper, styles.wrapperTabs, {
-        [styles.darkContainer]: theme === Theme.Dark,
+        [styles.darkContainer]: theme === Theme.Dark
       })}
     >
       <ul className={styles.tabList}>
@@ -21,7 +21,7 @@ const Tabs: FC<TabsProps> = ({ tabs, onClick, activeTab }) => {
             <li
               key={key}
               className={classNames({
-                [styles.activeTab]: activeTab === key,
+                [styles.activeTab]: activeTab === key
               })}
             >
               <button onClick={() => onClick(key)} disabled={disabled}>

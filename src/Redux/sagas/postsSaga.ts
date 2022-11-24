@@ -21,7 +21,7 @@ import callCheckingAuth from "./callCheckingAuth";
 
 
 function* getPostsWorker(action: PayloadAction<GetPostsPayload>) {
-  // yield put(setBlogLoading(true));
+   yield put(setBlogLoading(true));
 
   const { offset, ordering } = action.payload;
   const { data, status, problem } = yield call(Api.getPostsList, offset, ordering );
@@ -31,7 +31,7 @@ function* getPostsWorker(action: PayloadAction<GetPostsPayload>) {
   } else {
     console.log(problem);
   }
-  // yield put(setBlogLoading(false));
+   yield put(setBlogLoading(false));
 
 }
 function* getMyPostsWorker() {

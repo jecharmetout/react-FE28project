@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
 import {Link, useNavigate} from 'react-router-dom'
 
-//@ts-ignore
+
 import styles from "./SignUp.module.css";
 import classNames from "classnames";
 

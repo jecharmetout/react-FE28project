@@ -1,17 +1,20 @@
 import React, { FC } from "react";
-//@ts-ignore
-import styles from "./CardPost.module.css";
-import { CardSize } from "../CardList";
 import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+
 import {
   BookMarksIcon,
   Ellipsis,
   ThumbDownIcon,
   ThumbUpIcon
 } from "../../Assets/Icons";
+import styles from "./CardPost.module.css";
 import { CardPostProps } from "./types";
+import { CardSize } from "../CardList";
+
 import { Theme, useThemeContext } from "../../Context/ThemeContext/Context";
-import { useDispatch, useSelector } from "react-redux";
 import {
   setFavouritePost,
   setLikeStatus,
@@ -22,7 +25,6 @@ import {
 } from "../../Redux/reducers/postsReducer";
 import { CardListType, LikeStatus } from "../../Utils/globalTypes";
 import PostsSelectors from "../../Redux/selectors/postsSelectors";
-import { useNavigate } from "react-router-dom";
 
 const CardPost: FC<CardPostProps> = ({ post, size }) => {
   const { image, text, date, title, id, likeStatus } = post;

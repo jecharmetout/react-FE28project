@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-//@ts-ignore
+
 import styles from "./PostContent.module.css";
 import classNames from "classnames";
 import Post from "../../Components/Post";
