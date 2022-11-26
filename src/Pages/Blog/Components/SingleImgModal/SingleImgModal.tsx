@@ -1,5 +1,4 @@
 import React from "react";
-//@ts-ignore
 import styles from "./SingleImgModal.module.css";
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
