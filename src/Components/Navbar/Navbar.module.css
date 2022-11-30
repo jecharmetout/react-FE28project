@@ -1,4 +1,12 @@
-nav {
+.navbarMenu {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 72px;
+}
+.nav {
   width: 100%;
   background-color: rgb(34, 49, 170);
   position: relative;
@@ -7,85 +15,85 @@ nav {
   align-items: center;
   justify-content: space-between;
   /* margin-bottom: 30px; */
-
 }
 .userSearchWrapper {
-    display: flex;
+  display: flex;
+}
+.inputNavbar {
+  background: rgb(83, 96, 205);
+  color: #ffffff;
+}
+.inputContainer {
+  flex: 1;
+  display: flex;
+  margin: 0 15px;
+}
+/* Icons */
+.searchIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 84px;
+  height: 84px;
+  border-left: 1px solid rgb(83, 96, 205);
+}
+.searchIcon:hover  {
+  cursor: pointer;
+  background-color: #f3f3f3;
+}
+.searchIcon:hover svg > path {
+  stroke: rgb(83, 96, 205);
 
 }
-.inputNavbar{
-    background: rgb(83, 96, 205);
-    color: #ffffff;
+
+.userIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 84px;
+  height: 84px;
+
 }
-.search{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    border-right: 1px solid rgb(83, 96, 205);
-    border-left: 1px solid rgb(83, 96, 205);
-    cursor: pointer;
+.userIcon:hover {
+  cursor: pointer;
+  background-color: #f3f3f3;
+}
+.userIcon:hover svg > path {
+  stroke: rgb(83, 96, 205);
+}
+.sunMoonIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 84px;
+  height: 84px;
+  border-left: 1px solid rgb(83, 96, 205);
+  border-right: 1px solid rgb(83, 96, 205);
+
+
+}
+.sunMoonIcon:hover  {
+  cursor: pointer;
+  background-color: #f3f3f3;
+}
+.sunMoonIcon:hover svg > path {
+  fill: rgb(83, 96, 205);
 
 }
 .burgerButton {
-    padding: 0px 30px;
-    border-right: 1px solid rgb(83, 96, 205);
-    cursor: pointer;
-    /* font-size: 25px;
-    font-weight: 600;
-    color: #ffffff; */
-
-
-}
-
-.burgerButton p{
-  width: 25px;
-  height: 25px;
-  font-size: 25px;
-  font-weight: 600;
-  color: #ffffff;
-  text-align: center;
-
-
-}
-main {
-  padding: 50px;
-}
-main p {
-  margin: 20px 0;
-}
-.burgerBtn {
-  width: 20px;
-  height: 30px;
-  margin-left: 20px;
-  position: relative;
+  padding: 0px 30px;
+  border-right: 1px solid rgb(83, 96, 205);
   cursor: pointer;
-
+  text-align: center;
+  height: 84px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.burgerBtn:before {
-  content: "";
-  position: absolute;
-  top: 3px;
-  width: 25px;
-  background: white;
-  height: 3px;
+.burgerButton:hover {
+  cursor: pointer;
+  background-color: #f3f3f3;
 }
-
-.burgerBtn span {
-  position: absolute;
-  top: 15px;
-  width: 25px;
-  background: white;
-  height: 3px;
-}
-.burgerBtn:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 25px;
-  background: white;
-  height: 3px;
+.burgerButton:hover svg > path {
+  fill: rgb(83, 96, 205);
 }

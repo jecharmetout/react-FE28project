@@ -1,114 +1,37 @@
-import React, { FC, useState } from "react";
-// @ts-ignore
+import React, { useState } from "react";
+import { Provider, useDispatch, useSelector } from "react-redux";
+
 import styles from "./App.module.css";
-import Button, { ButtonType } from "./Components/Button";
-import User from "./Components/User";
-import Title from "./Components/Title";
-import Tabs from "./Components/Tabs";
-import Input from "./Components/Input";
-import Navbar from "./Components/Navbar";
-import Menu from "./Components/Navbar/Menu"
+import classNames from "classnames";
 
-function App() {
-  const [value, setValue] = useState<string>("");
+import ThemeProvider from "./Context/ThemeContext/Provider";
+import Router from "./Pages/Router";
+import store from "./Redux/store";
+import { changeTheme } from "./Redux/reducers/themeReducer";
+import ThemeSelectors from "./Redux/selectors/themeSelectors";
 
-  const onChange = (inputValue: string) => {
-    setValue(inputValue);
+
+
+const App = () => {
+  const theme = useSelector(ThemeSelectors.getTheme);
+  const dispatch = useDispatch();
+
+  const onChangeTheme = () => {
+    dispatch(changeTheme());
   };
-  const [isOpened, setOpened] = useState(false);
-
   return (
-    <div className={styles.app}>
-      <Navbar
-        onClick={() => setOpened(!isOpened)}
-        title={isOpened ? "x" : "="}
-        input={
-          isOpened ? null : (
-            <Input
-              placeholder={"Placeholder"}
-              onChange={onChange}
-              value={value}
-            />
-          )
-        }
-      />
-      {isOpened && <Menu/>}
-      <Input
-        placeholder={"Placeholder"}
-        onChange={onChange}
-        value={value}
-        // disabled={true}
-        // error={true}
-      />
-
-      <div className={styles.wrapper}>
-        <Button
-          type={ButtonType.Primary}
-          title={"Primary"}
-          onClick={() => {
-            console.log("primary");
-          }}
-          className={styles.primary}
-          disabled={false}
-        />
-        <Button
-          type={ButtonType.Primary}
-          title={"Primary"}
-          onClick={() => {
-            console.log("primary");
-          }}
-          className={styles.primary}
-          disabled={true}
-        />
-        <Button
-          type={ButtonType.Secondary}
-          title={"Secondary"}
-          onClick={() => {
-            console.log("secondary");
-          }}
-          className={styles.secondary}
-          disabled={false}
-        />
-        <Button
-          type={ButtonType.Secondary}
-          title={"Secondary"}
-          onClick={() => {
-            console.log("secondary");
-          }}
-          className={styles.secondary}
-          disabled={true}
-        />
-        <Button
-          type={ButtonType.Error}
-          title={"Error"}
-          onClick={() => {
-            console.log("error");
-          }}
-          className={styles.error}
-          disabled={false}
-        />
-        <Button
-          type={ButtonType.Error}
-          title={"Error"}
-          onClick={() => {
-            console.log("error");
-          }}
-          className={styles.error}
-          disabled={true}
-        />
-      </div>
-
-      <div className={styles.wrapper}>
-        <User userName={"Artem Malkin"} />
-      </div>
-
-      <Tabs />
-
-      <div className={`${styles.wrapper}`}>
-        <Title title={"Sign In"} />
-      </div>
-    </div>
+    <ThemeProvider theme={theme} onChangeTheme={onChangeTheme}>
+      <Router />
+    </ThemeProvider>
   );
-}
+};
 
-export default App;
+const AppWithStore = () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};
+
+export default AppWithStore;

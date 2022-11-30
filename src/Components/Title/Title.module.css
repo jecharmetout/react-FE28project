@@ -1,11 +1,17 @@
 .title {
-  font-size: 50px;
-  font-weight: bold;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 80px;
+  color: #313037;
 }
 .wrapperTitle {
-  background: rgb(212, 207, 207);
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: start;
+}
+.darkContainer {
+  background-color: #313037;
+}
+.darkContainer .title {
+  color: #ffffff;
 }
